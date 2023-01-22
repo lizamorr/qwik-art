@@ -1,0 +1,40 @@
+/**
+ * WHAT IS THIS FILE?
+ *
+ * Globally applied styles. No matter which components are in the page or matching route,
+ * the styles in here will be applied to the Document, without any sort of CSS scoping.
+ *
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --qwik-dark-blue: #006ce9;
+  --qwik-light-blue: #18b6f6;
+  --qwik-light-purple: #ac7ff4;
+  --qwik-dark-purple: #713fc2;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Jost", sans-serif;
+  width: 100%;
+  font-variant: all-small-caps;
+}
+
+section {
+  display: flex;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.all-small-caps {
+  font-variant: all-small-caps;
+}
+
+#thank-you {
+  font-variant: normal;
+  font-family: cursive;
+  letter-spacing: 1px;
+}
