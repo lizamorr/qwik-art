@@ -1,16 +1,18 @@
 import {
   $,
   component$,
+  useClientEffect$,
   useOnWindow,
   useStore,
-  useTask$,
 } from "@builder.io/qwik";
-import { Check, LoadingIcon, SendIcon } from "../../integrations/react/mui";
 
 import { DocumentHead } from "@builder.io/qwik-city";
 import antwerp from "./antwerp-multi-min.png";
 import capri from "./capri-min.jpg";
+import checkIcon from "./check.svg";
 import emailjs from "@emailjs/browser";
+import loadingIcon from "./loading.svg";
+import sendIcon from "./send.svg";
 
 export default component$(() => {
   const mailerState = useStore({
@@ -26,13 +28,6 @@ export default component$(() => {
     isMobile: true,
   });
 
-  useOnWindow(
-    "resize",
-    $(() => {
-      state.isMobile = window.innerWidth < 640;
-    })
-  );
-
   const handleStateChange = $((e: any): void => {
     if (e.target.name === "name") mailerState.name = e.target.value;
     if (e.target.name === "email") mailerState.email = e.target.value;
@@ -45,21 +40,24 @@ export default component$(() => {
     mailerState.message = "";
   });
 
-  useTask$(() => {
-    mailerState.userId = import.meta.env.VITE_USER_ID;
+  useClientEffect$(() => {
+    state.isMobile = window.innerWidth < 640;
   });
+
+  useOnWindow(
+    "resize",
+    $(() => {
+      state.isMobile = window.innerWidth < 640;
+    })
+  );
 
   const submitEmail = $(async (e: any): Promise<void> => {
     state.isSendingEmail = true;
+    const userId = import.meta.env.VITE_USER_ID;
 
     try {
-      emailjs.init(mailerState.userId);
-      await emailjs.sendForm(
-        "service_art",
-        "template_art",
-        e.target,
-        mailerState.userId
-      );
+      emailjs.init(userId);
+      await emailjs.sendForm("service_art", "template_art", e.target, userId);
       state.isSendingEmail = false;
       state.isEmailSent = true;
       resetForm();
@@ -80,7 +78,7 @@ export default component$(() => {
         preventdefault:submit
         class={`${
           state.isSendingEmail ? "opacity-80" : "opacity-100"
-        } bg-contain flex justify-center rounded-lg m-4 shadow-lg w-full sm:w-3/4`}
+        } bg-cover bg-center flex justify-center rounded-lg m-4 shadow-lg w-full sm:w-3/4`}
         style={{
           backgroundImage: `url(${state.isMobile ? capri : antwerp})`,
         }}
@@ -120,18 +118,18 @@ export default component$(() => {
           <div class="flex justify-center align-center pt-8">
             <button
               disabled={!mailerState.email || !mailerState.name}
-              class={`justify-center align-center border border-slate-500 bg-white hover:bg-slate-200 px-6 py-2 cursor-pointer rounded-md disabled:bg-slate-50  ${
+              class={`flex items-center justify-center align-center border border-slate-500 bg-white hover:bg-slate-200 px-4 py-2 cursor-pointer rounded-md disabled:bg-slate-50  ${
                 !state.isEmailSent && !state.isSendingEmail
                   ? "disabled:opacity-60"
                   : "disabled:opacity-100"
               } disabled:cursor-not-allowed`}
             >
               {state.isEmailSent ? (
-                <Check />
+                <img src={checkIcon} class="h-5 w-5" alt="Email sent" />
               ) : state.isSendingEmail ? (
-                <LoadingIcon />
+                <img src={loadingIcon} class="h-5 w-5" alt="Sending email" />
               ) : (
-                <SendIcon />
+                <img src={sendIcon} class="h-5 w-5" alt="Send email" />
               )}
             </button>
           </div>

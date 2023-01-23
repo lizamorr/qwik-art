@@ -10,7 +10,7 @@ export default component$(() => {
       <a href="/" title="Liza Morrison">
         <img
           src={initials}
-          className="h-12 w-15 cursor-pointer"
+          class="h-12 w-15 cursor-pointer"
           aria-label="Navigate home"
         />
       </a>

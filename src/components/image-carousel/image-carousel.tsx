@@ -1,7 +1,8 @@
-import { LeftArrow, RightArrow } from "../../integrations/react/mui";
 import { component$, useStore } from "@builder.io/qwik";
 
 import type { IGalleryImage } from "../../routes/gallery/image-groups";
+import leftArrow from "./left-arrow.svg";
+import rightArrow from "./right-arrow.svg";
 
 export default component$((props: { group: any }) => {
   const { group } = props;
@@ -42,26 +43,26 @@ export default component$((props: { group: any }) => {
         class="flex top-[40%] absolute w-full justify-between"
         style={`max-width: ${img.originalWidth}px`}
       >
-        <a
-          class="font-mono text-slate-300 hover:text-slate-500 ml-[-20px] md:ml-[-25px] justify-center items-center cursor-pointer"
+        <img
+          src={leftArrow}
           onClick$={() => {
             state.slideIndex === 1
               ? (state.slideIndex = totalNumOfImages)
               : (state.slideIndex -= 1);
           }}
-        >
-          <LeftArrow />
-        </a>
-        <a
-          class="font-mono text-slate-300 hover:text-slate-500 mr-[-20px] md:mr-[-25px] justify-center items-center cursor-pointer"
+          class="h-8 w-8 md:h-12 md:w-12 arrow ml-[-30px] md:ml-[-40px] justify-center items-center cursor-pointer"
+          alt="Left arrow"
+        />
+        <img
+          src={rightArrow}
           onClick$={() => {
             state.slideIndex === totalNumOfImages
               ? (state.slideIndex = 1)
               : (state.slideIndex += 1);
           }}
-        >
-          <RightArrow />
-        </a>
+          class="h-8 w-8 md:h-12 md:w-12 arrow mr-[-30px] md:mr-[-40px] justify-center items-center cursor-pointer"
+          alt="Right arrow"
+        />
       </div>
     </div>
   ));
