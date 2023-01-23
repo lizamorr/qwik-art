@@ -1,4 +1,4 @@
-import { component$, useStore } from "@builder.io/qwik";
+import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
 
 import { DocumentHead } from "@builder.io/qwik-city";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
@@ -11,7 +11,13 @@ export default component$(() => {
     isPaintingSelected: false,
     isDigitalSelected: false,
     isOtherSelected: false,
+    isLoading: true,
   });
+
+  useClientEffect$(() => {
+    setTimeout(() => (state.isLoading = false), 1000);
+  });
+
   return (
     <div class="flex flex-col justify-center align-center w-full">
       <div class="flex flex-col">
@@ -90,34 +96,49 @@ export default component$(() => {
           </span>
         </div>
         <div class="flex flex-row w-full flex-wrap justify-center text-center">
-          {state.filteredImages.map((group, index) => (
-            <div class="self-center">
-              {group.length === 1 ? (
-                <div
-                  key={index}
-                  class="align-center inline-flex flex-col justify-center w-full m-5 max-w-fit"
-                >
-                  <img
-                    src={group[0].original}
-                    alt={group[0].originalAlt}
-                    id={group[0].id}
-                    class="w-full"
-                    style={`max-width: ${group[0].originalWidth}px`}
-                  />
-                  <p
-                    class="text-md md:text-xl w-full text-center tracking-wider mt-4"
-                    style={`max-width: ${group[0].originalWidth}px`}
-                  >
-                    {group[0].desc}
-                  </p>
-                </div>
-              ) : (
-                <div class="relative align-center inline-flex flex-col justify-center w-full my-5 mx-10 md:mx-8 max-w-fit">
-                  <ImageCarousel group={group} />
-                </div>
-              )}
+          {state.isLoading ? (
+            <div class="pt-20 h-20 w-20">
+              <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
-          ))}
+          ) : (
+            state.filteredImages.map((group, index) => (
+              <div class="self-center">
+                {group.length === 1 ? (
+                  <div
+                    key={index}
+                    class="align-center inline-flex flex-col justify-center w-full m-5 max-w-fit"
+                  >
+                    <img
+                      src={group[0].original}
+                      alt={group[0].originalAlt}
+                      id={group[0].id}
+                      class="w-full"
+                      style={`max-width: ${group[0].originalWidth}px`}
+                    />
+                    <p
+                      class="text-md md:text-xl w-full text-center tracking-wider mt-4"
+                      style={`max-width: ${group[0].originalWidth}px`}
+                    >
+                      {group[0].desc}
+                    </p>
+                  </div>
+                ) : (
+                  <div class="relative align-center inline-flex flex-col justify-center w-full my-5 mx-10 md:mx-8 max-w-fit">
+                    <ImageCarousel group={group} />
+                  </div>
+                )}
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>
