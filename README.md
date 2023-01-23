@@ -1,4 +1,4 @@
-# Qwik City App ⚡️
+# Qwik City App ⚡️ lizamorrisonart.com
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
