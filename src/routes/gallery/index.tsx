@@ -1,7 +1,14 @@
-import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useClientEffect$,
+  useOnWindow,
+  useStore,
+} from "@builder.io/qwik";
 
 import { DocumentHead } from "@builder.io/qwik-city";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
+import arrowUp from "./arrow-up.svg";
 import { imageGroups } from "./image-groups";
 
 export default component$(() => {
@@ -12,14 +19,40 @@ export default component$(() => {
     isDigitalSelected: false,
     isOtherSelected: false,
     isLoading: true,
+    isScrollBtnDisplayed: false,
   });
 
   useClientEffect$(() => {
     setTimeout(() => (state.isLoading = false), 1000);
   });
 
+  useOnWindow(
+    "scroll",
+    $(() => {
+      if (
+        (document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20) &&
+        !state.isScrollBtnDisplayed
+      )
+        state.isScrollBtnDisplayed = true;
+    })
+  );
+
   return (
     <div class="flex flex-col justify-center align-center w-full">
+      {state.isScrollBtnDisplayed ? (
+        <div
+          id="scroll-btn"
+          class="fixed bottom-10 right-4 z-50 p-2 cursor-pointer"
+          onClick$={() => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            state.isScrollBtnDisplayed = false;
+          }}
+        >
+          <img src={arrowUp} class="h-10 w-10" alt="Scroll to top of page" />
+        </div>
+      ) : null}
       <div class="flex flex-col">
         <div class="text-md md:text-xl mb-4 flex flex-col md:flex-row md:space-x-20 justify-center items-center w-full tracking-wider">
           <span
