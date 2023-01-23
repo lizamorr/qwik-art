@@ -40,7 +40,7 @@ export default component$((props: { group: any }) => {
         </p>
       </div>
       <div
-        class="flex top-[40%] absolute w-full justify-between"
+        class="flex top-0 absolute h-full w-full justify-between"
         style={`max-width: ${img.originalWidth}px`}
       >
         <img
@@ -50,7 +50,7 @@ export default component$((props: { group: any }) => {
               ? (state.slideIndex = totalNumOfImages)
               : (state.slideIndex -= 1);
           }}
-          class="h-8 w-8 md:h-12 md:w-12 arrow ml-[-30px] md:ml-[-40px] justify-center items-center cursor-pointer"
+          class="h-full w-8 md:h-full md:w-12 arrow ml-[-30px] md:ml-[-40px] justify-center items-center cursor-pointer"
           alt="Left arrow"
         />
         <img
@@ -60,7 +60,7 @@ export default component$((props: { group: any }) => {
               ? (state.slideIndex = 1)
               : (state.slideIndex += 1);
           }}
-          class="h-8 w-8 md:h-12 md:w-12 arrow mr-[-30px] md:mr-[-40px] justify-center items-center cursor-pointer"
+          class="h-full w-8 md:h-full md:w-12 arrow mr-[-30px] md:mr-[-40px] justify-center items-center cursor-pointer"
           alt="Right arrow"
         />
       </div>

@@ -91,7 +91,7 @@ export default component$(() => {
         </div>
         <div class="flex flex-row w-full flex-wrap justify-center text-center">
           {state.filteredImages.map((group, index) => (
-            <div>
+            <div class="self-center">
               {group.length === 1 ? (
                 <div
                   key={index}

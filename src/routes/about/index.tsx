@@ -26,7 +26,7 @@ export default component$(() => {
           </a>
         </div>
       </div>
-      <div class="flex justify-center">
+      <div class="flex justify-center px-6">
         <img class="w-full max-w-lg" src={aboutText} />
       </div>
     </div>
