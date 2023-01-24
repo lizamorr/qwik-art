@@ -33,7 +33,7 @@ export default component$((props: { group: any }) => {
           ))}
         </div>
         <p
-          class="w-full text-center tracking-wider mt-2 text-md md:text-xl"
+          class="w-full text-center tracking-wider mt-1 text-md md:text-xl"
           style={`max-width: ${img.originalWidth}px`}
         >
           {img.desc}

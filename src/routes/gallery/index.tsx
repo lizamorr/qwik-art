@@ -158,7 +158,7 @@ export default component$(() => {
                     style={`max-width: ${group[0].originalWidth}px`}
                   />
                   <p
-                    class="text-md md:text-xl w-full text-center tracking-wider mt-4"
+                    class="text-md md:text-xl w-full text-center tracking-wider mt-2"
                     style={`max-width: ${group[0].originalWidth}px`}
                   >
                     {group[0].desc}
