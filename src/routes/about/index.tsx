@@ -1,4 +1,4 @@
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import aboutText from "./about-text-min.jpg";
 import { component$ } from "@builder.io/qwik";
 import parisPhoto from "./me-paris-compressed.jpg";
@@ -33,6 +33,9 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = {
-  title: "About Liza",
+export const head: DocumentHead = () => {
+  return {
+    title: "About Liza Morrison",
+    description: "Get to know Liza Morrison.",
+  };
 };

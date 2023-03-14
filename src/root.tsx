@@ -24,7 +24,7 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Jost"
+          href="https://fonts.googleapis.com/css?family=Jost&display=swap"
         />
         <RouterHead />
       </head>

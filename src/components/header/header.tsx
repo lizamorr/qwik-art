@@ -7,10 +7,10 @@ export default component$(() => {
 
   return (
     <header class="fixed w-full flex items-center bg-white shadow-md z-10">
-      <a href="/" title="Liza Morrison">
+      <a class="h-12 w-15" href="/" title="Liza Morrison">
         <img
           src={initials}
-          class="h-12 w-15 cursor-pointer"
+          class="logo cursor-pointer"
           aria-label="Navigate home"
         />
       </a>
@@ -19,7 +19,7 @@ export default component$(() => {
         <li class="inline-block m-0 p-0">
           <a
             class={`text-md md:text-xl inline-block hover:underline underline-offset-2 tracking-wider ${
-              loc.pathname === "/gallery/"
+              loc.url.pathname === "/gallery/"
                 ? "underline underline-offset-2"
                 : "no-underline"
             }`}
@@ -31,7 +31,7 @@ export default component$(() => {
         <li class="inline-block m-0 p-0">
           <a
             class={`text-md md:text-xl inline-block hover:underline underline-offset-2 tracking-wider ${
-              loc.pathname === "/contact/"
+              loc.url.pathname === "/contact/"
                 ? "underline underline-offset-2"
                 : "no-underline"
             }`}
@@ -43,7 +43,7 @@ export default component$(() => {
         <li class="inline-block m-0 p-0">
           <a
             class={`text-md md:text-lg inline-block hover:underline underline-offset-2 tracking-wider ${
-              loc.pathname === "/about/"
+              loc.url.pathname === "/about/"
                 ? "underline underline-offset-2"
                 : "no-underline"
             }`}

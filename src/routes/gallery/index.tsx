@@ -1,12 +1,12 @@
 import {
   $,
   component$,
-  useClientEffect$,
   useOnWindow,
   useStore,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
 import arrowUp from "./arrow-up.svg";
 import { imageGroups } from "./image-groups";
@@ -22,7 +22,7 @@ export default component$(() => {
     isScrollBtnDisplayed: false,
   });
 
-  useClientEffect$(() => {
+  useVisibleTask$(() => {
     setTimeout(() => (state.isLoading = false), 1000);
   });
 
@@ -177,6 +177,10 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = {
-  title: "Liza Morrison Gallery",
+export const head: DocumentHead = () => {
+  return {
+    title: "Liza Morrison Gallery",
+    description:
+      "Drawings, paintings, digital art, and other works by Liza Morrison over the years.",
+  };
 };

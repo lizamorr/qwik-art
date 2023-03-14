@@ -1,12 +1,12 @@
 import {
   $,
   component$,
-  useClientEffect$,
   useOnWindow,
   useStore,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import antwerp from "./antwerp-multi-min.png";
 import capri from "./capri-min.jpg";
 import checkIcon from "./check.svg";
@@ -40,7 +40,7 @@ export default component$(() => {
     mailerState.message = "";
   });
 
-  useClientEffect$(() => {
+  useVisibleTask$(() => {
     state.isMobile = window.innerWidth < 640;
   });
 
@@ -139,6 +139,10 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = {
-  title: "Contact Liza",
+export const head: DocumentHead = () => {
+  return {
+    title: "Contact Liza Morrison",
+    description:
+      "Send an email to contact Liza Morrison about commissions or other questions.",
+  };
 };
