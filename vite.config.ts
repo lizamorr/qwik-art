@@ -1,12 +1,19 @@
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import { defineConfig } from "vite";
+import postcssNested from "postcss-nested";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig(() => {
   return {
-    plugins: [qwikCity(), qwikVite(), tsconfigPaths(), ViteMinifyPlugin()],
+    plugins: [
+      qwikCity(),
+      qwikVite(),
+      tsconfigPaths(),
+      ViteMinifyPlugin(),
+      postcssNested(),
+    ],
     preview: {
       headers: {
         "Cache-Control": "public, max-age=600",
@@ -17,7 +24,7 @@ export default defineConfig(() => {
       reportCompressedSize: true,
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1600,
-      minify: true,
+      minify: "terser",
     },
   };
 });
