@@ -7,11 +7,11 @@ import {
 } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
-import antwerp from "./antwerp-multi-min.png";
-import capri from "./capri-min.jpg";
+import capri from "../gallery/images/capri-min.jpg";
 import checkIcon from "./check.svg";
 import emailjs from "@emailjs/browser";
 import loadingIcon from "./loading.svg";
+import maastricht from "../gallery/images/maastricht-min.jpg";
 import sendIcon from "./send.svg";
 
 export default component$(() => {
@@ -78,9 +78,9 @@ export default component$(() => {
         preventdefault:submit
         class={`${
           state.isSendingEmail ? "opacity-80" : "opacity-100"
-        } bg-cover bg-center flex justify-center rounded-lg m-4 shadow-lg w-full sm:w-3/4`}
+        } bg-cover bg-center flex justify-center rounded-lg m-4 shadow-lg w-full sm:w-7/12`}
         style={{
-          backgroundImage: `url(${state.isMobile ? capri : antwerp})`,
+          backgroundImage: `url(${state.isMobile ? capri : maastricht})`,
         }}
         method="post"
         onSubmit$={submitEmail}
@@ -93,7 +93,7 @@ export default component$(() => {
             Thank you!
           </div>
         ) : null}
-        <fieldset class="flex relative flex-col py-6 w-3/4">
+        <fieldset class="flex relative flex-col py-6 w-8/12">
           <input
             class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[40px] placeholder-black px-4"
             placeholder="Name"

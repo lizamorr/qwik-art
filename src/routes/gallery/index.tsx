@@ -1,10 +1,4 @@
-import {
-  $,
-  component$,
-  useOnWindow,
-  useStore,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { $, component$, useOnWindow, useStore } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
@@ -18,12 +12,7 @@ export default component$(() => {
     isPaintingSelected: false,
     isDigitalSelected: false,
     isOtherSelected: false,
-    isLoading: true,
     isScrollBtnDisplayed: false,
-  });
-
-  useVisibleTask$(() => {
-    setTimeout(() => (state.isLoading = false), 1000);
   });
 
   useOnWindow(
@@ -129,20 +118,6 @@ export default component$(() => {
           </span>
         </div>
         <div class="flex flex-row w-full flex-wrap justify-center text-center">
-          {state.isLoading ? (
-            <div class="pt-20 h-full w-full bg-white z-50">
-              <div class="lds-roller">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
-          ) : null}
           {state.filteredImages.map((group, index) => (
             <div class="self-center">
               {group.length === 1 ? (

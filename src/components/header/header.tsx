@@ -42,7 +42,7 @@ export default component$(() => {
         </li>
         <li class="inline-block m-0 p-0">
           <a
-            class={`text-md md:text-lg inline-block hover:underline underline-offset-2 tracking-wider ${
+            class={`text-md md:text-xl inline-block hover:underline underline-offset-2 tracking-wider ${
               loc.url.pathname === "/about/"
                 ? "underline underline-offset-2"
                 : "no-underline"

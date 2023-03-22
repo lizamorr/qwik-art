@@ -66,6 +66,7 @@ import lionGouche from "./images/lion-gouche-min.jpg";
 import llama from "./images/llama-min.jpg";
 import lucas from "./images/lucas-min.jpg";
 import lucasOne from "./images/lucas-one-min.jpg";
+import maastricht from "./images/maastricht-min.jpg";
 import maggieTommy from "./images/maggie-tommy-min.jpg";
 import mandalorian from "./images/mandalorian-min.jpg";
 import meDigital from "./images/me-digital-min.jpg";
@@ -143,6 +144,15 @@ export const imageGroups: IGalleryImage[][] = [
       id: "digital",
       originalAlt: "Digital drawing of Switzerland",
       desc: 'Digital painting, 52x24", April 2022',
+    },
+  ],
+  [
+    {
+      original: maastricht,
+      originalWidth: 800,
+      id: "digital",
+      originalAlt: "Digital drawing of Maastricht",
+      desc: 'Digital watercolor, 20x10", March 2023',
     },
   ],
   [
