@@ -80,6 +80,9 @@ import odellAndSaquon from "./images/odell-and-saquon-min.jpg";
 import paigeEmmy from "./images/paige-emmy-min.jpg";
 import pancake from "./images/pancake-min.jpg";
 import parentsPrint from "./images/parents-print-min.jpg";
+import peakyBlack from "./images/peaky-black-min.jpg";
+import peakyBlackAndWhite from "./images/peaky-white-and-black-min.jpg";
+import peakyWhite from "./images/peaky-white-min.jpg";
 import pieMiniStand from "./images/pie-mini-stand-min.jpg";
 import pipelineEtch from "./images/pipeline-etch-min.jpg";
 import plantAnatomy from "./images/plant-anatomy-min.jpg";
@@ -144,6 +147,29 @@ export const imageGroups: IGalleryImage[][] = [
       id: "digital",
       originalAlt: "Digital drawing of Switzerland",
       desc: 'Digital painting, 52x24", April 2022',
+    },
+  ],
+  [
+    {
+      original: peakyBlackAndWhite,
+      originalWidth: 800,
+      id: "digital",
+      originalAlt: "Digital drawing of Thomas Shelby on horse",
+      desc: 'Digital drawing, 10x4", Feb 2022',
+    },
+    {
+      original: peakyBlack,
+      originalWidth: 600,
+      id: "digital",
+      originalAlt: "Digital drawing of Thomas Shelby on horse",
+      desc: 'Digital drawing, 10x4", Feb 2022',
+    },
+    {
+      original: peakyWhite,
+      originalWidth: 600,
+      id: "digital",
+      originalAlt: "Digital drawing of Thomas Shelby on horse",
+      desc: 'Digital drawing, 10x4", Feb 2022',
     },
   ],
   [
