@@ -1,4 +1,4 @@
-import { component$, useStore } from "@builder.io/qwik";
+import { $, component$, useOnDocument, useStore } from "@builder.io/qwik";
 
 import type { IGalleryImage } from "../../routes/gallery/image-groups";
 import leftArrow from "./left-arrow.svg";
@@ -8,6 +8,23 @@ export default component$((props: { group: any }) => {
   const { group } = props;
   const state = useStore({ slideIndex: 1 });
   const totalNumOfImages = group.length;
+
+  useOnDocument(
+    "swiped-left",
+    $(() => {
+      state.slideIndex === totalNumOfImages
+        ? (state.slideIndex = 1)
+        : (state.slideIndex += 1);
+    })
+  );
+  useOnDocument(
+    "swiped-right",
+    $(() => {
+      state.slideIndex === 1
+        ? (state.slideIndex = totalNumOfImages)
+        : (state.slideIndex -= 1);
+    })
+  );
 
   return group.map((img: IGalleryImage, index: number) => (
     <div
