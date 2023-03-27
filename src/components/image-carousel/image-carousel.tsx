@@ -6,23 +6,31 @@ import rightArrow from "./right-arrow.svg";
 
 export default component$((props: { group: any }) => {
   const { group } = props;
-  const state = useStore({ slideIndex: 1 });
+  const state = useStore({ slideIndex: 1, touchendX: 0, touchstartX: 0 });
   const totalNumOfImages = group.length;
 
   useOnDocument(
-    "swiped-left",
-    $(() => {
-      state.slideIndex === totalNumOfImages
-        ? (state.slideIndex = 1)
-        : (state.slideIndex += 1);
+    "touchstart",
+    $((e) => {
+      const event = e as TouchEvent;
+      state.touchstartX = event.changedTouches[0].screenX;
     })
   );
   useOnDocument(
-    "swiped-right",
-    $(() => {
-      state.slideIndex === 1
-        ? (state.slideIndex = totalNumOfImages)
-        : (state.slideIndex -= 1);
+    "touchend",
+    $((e) => {
+      const event = e as TouchEvent;
+      state.touchendX = event.changedTouches[0].screenX;
+      if (state.touchendX < state.touchstartX) {
+        state.slideIndex === totalNumOfImages
+          ? (state.slideIndex = 1)
+          : (state.slideIndex += 1);
+      }
+      if (state.touchendX > state.touchstartX) {
+        state.slideIndex === 1
+          ? (state.slideIndex = totalNumOfImages)
+          : (state.slideIndex -= 1);
+      }
     })
   );
 
