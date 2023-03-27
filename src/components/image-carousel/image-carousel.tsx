@@ -1,4 +1,4 @@
-import { $, component$, useOnDocument, useStore } from "@builder.io/qwik";
+import { component$, useStore } from "@builder.io/qwik";
 
 import type { IGalleryImage } from "../../routes/gallery/image-groups";
 import leftArrow from "./left-arrow.svg";
@@ -6,38 +6,43 @@ import rightArrow from "./right-arrow.svg";
 
 export default component$((props: { group: any }) => {
   const { group } = props;
-  const state = useStore({ slideIndex: 1, touchendX: 0, touchstartX: 0 });
+  const state = useStore({
+    slideIndex: 1,
+    touchendX: 0,
+    touchstartX: 0,
+    touchendY: 0,
+    touchstartY: 0,
+  });
   const totalNumOfImages = group.length;
-
-  useOnDocument(
-    "touchstart",
-    $((e) => {
-      const event = e as TouchEvent;
-      state.touchstartX = event.changedTouches[0].screenX;
-    })
-  );
-  useOnDocument(
-    "touchend",
-    $((e) => {
-      const event = e as TouchEvent;
-      state.touchendX = event.changedTouches[0].screenX;
-      if (state.touchendX < state.touchstartX) {
-        state.slideIndex === totalNumOfImages
-          ? (state.slideIndex = 1)
-          : (state.slideIndex += 1);
-      }
-      if (state.touchendX > state.touchstartX) {
-        state.slideIndex === 1
-          ? (state.slideIndex = totalNumOfImages)
-          : (state.slideIndex -= 1);
-      }
-    })
-  );
 
   return group.map((img: IGalleryImage, index: number) => (
     <div
       key={index}
       class={state.slideIndex === index + 1 ? "block" : "hidden"}
+      onTouchStart$={(e) => {
+        state.touchstartX = e.changedTouches[0].screenX;
+        state.touchstartY = e.changedTouches[0].screenY;
+      }}
+      onTouchEnd$={(e) => {
+        state.touchendX = e.changedTouches[0].screenX;
+        state.touchendY = e.changedTouches[0].screenY;
+
+        if (
+          Math.abs(state.touchendX - state.touchstartX) >
+          Math.abs(state.touchendY - state.touchstartY)
+        ) {
+          if (state.touchendX < state.touchstartX) {
+            state.slideIndex === totalNumOfImages
+              ? (state.slideIndex = 1)
+              : (state.slideIndex += 1);
+          }
+          if (state.touchendX > state.touchstartX) {
+            state.slideIndex === 1
+              ? (state.slideIndex = totalNumOfImages)
+              : (state.slideIndex -= 1);
+          }
+        }
+      }}
     >
       <div>
         <img
