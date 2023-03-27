@@ -18,7 +18,7 @@ export default component$(() => {
       <ul class="m-0 list-none flex-1 text-right pr-4 space-x-4">
         <li class="inline-block m-0 p-0">
           <a
-            class={`text-md md:text-xl inline-block hover:underline underline-offset-2 tracking-wider ${
+            class={`text-xl md:text-2xl inline-block hover:underline underline-offset-2 tracking-wider ${
               loc.url.pathname === "/gallery/"
                 ? "underline underline-offset-2"
                 : "no-underline"
@@ -30,7 +30,7 @@ export default component$(() => {
         </li>
         <li class="inline-block m-0 p-0">
           <a
-            class={`text-md md:text-xl inline-block hover:underline underline-offset-2 tracking-wider ${
+            class={`text-xl md:text-2xl inline-block hover:underline underline-offset-2 tracking-wider ${
               loc.url.pathname === "/contact/"
                 ? "underline underline-offset-2"
                 : "no-underline"
@@ -42,7 +42,7 @@ export default component$(() => {
         </li>
         <li class="inline-block m-0 p-0">
           <a
-            class={`text-md md:text-xl inline-block hover:underline underline-offset-2 tracking-wider ${
+            class={`text-xl md:text-2xl inline-block hover:underline underline-offset-2 tracking-wider ${
               loc.url.pathname === "/about/"
                 ? "underline underline-offset-2"
                 : "no-underline"
