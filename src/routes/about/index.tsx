@@ -1,6 +1,7 @@
 import type { DocumentHead } from "@builder.io/qwik-city";
 import aboutText from "./about-text-min.jpg";
 import { component$ } from "@builder.io/qwik";
+import github from "./github-mark.png";
 import lizaMontStMichel from "./liza-mont-st-michel.png";
 
 export default component$(() => {
@@ -12,7 +13,7 @@ export default component$(() => {
           src={lizaMontStMichel}
           alt="Liza at Mont St. Michel"
         />
-        <div class="flex justify-center mt-6">
+        <div class="flex justify-center mt-6 space-x-2">
           <a
             target="_blank"
             rel="noreferrer"
@@ -23,6 +24,14 @@ export default component$(() => {
               src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_50,h_50,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp"
               class="w-10 h-10 object-cover"
             />
+          </a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/lizamorr/artwork-website"
+            class="flex items-center"
+          >
+            <img alt="GitHub" src={github} class="w-8 h-8 object-cover" />
           </a>
         </div>
       </div>
