@@ -1,16 +1,16 @@
 import type { DocumentHead } from "@builder.io/qwik-city";
 import aboutText from "./about-text-min.jpg";
 import { component$ } from "@builder.io/qwik";
-import parisPhoto from "./me-paris-compressed.jpg";
+import lizaMontStMichel from "./liza-mont-st-michel.png";
 
 export default component$(() => {
   return (
     <div class="flex flex-wrap justify-center w-full">
       <div class="flex flex-col align-center mx-10">
         <img
-          class="rounded-lg w-full max-w-md"
-          src={parisPhoto}
-          alt="Liza in Paris"
+          class="w-full max-w-md"
+          src={lizaMontStMichel}
+          alt="Liza at Mont St. Michel"
         />
         <div class="flex justify-center mt-6">
           <a
