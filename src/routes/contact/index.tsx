@@ -11,8 +11,8 @@ import capri from "../gallery/images/capri-min.jpg";
 import checkIcon from "./check.svg";
 import emailjs from "@emailjs/browser";
 import loadingIcon from "./loading.svg";
-import maastricht from "../gallery/images/maastricht-min.jpg";
 import sendIcon from "./send.svg";
+import switzerland from "../gallery/images/switzerland-min.jpg";
 
 export default component$(() => {
   const mailerState = useStore({
@@ -73,15 +73,17 @@ export default component$(() => {
   });
 
   return (
-    <div class="flex justify-center w-full">
+    <div
+      style={{
+        backgroundImage: `url(${state.isMobile ? capri : switzerland})`,
+      }}
+      class="fixed top-[48px] left-0 h-screen w-full flex justify-center bg-cover bg-center"
+    >
       <form
         preventdefault:submit
         class={`${
           state.isSendingEmail ? "opacity-80" : "opacity-100"
-        } bg-cover bg-center flex justify-center rounded-lg m-4 shadow-lg w-full sm:w-7/12`}
-        style={{
-          backgroundImage: `url(${state.isMobile ? capri : maastricht})`,
-        }}
+        } flex justify-center pt-24 m-4 w-4/5 lg:w-2/5`}
         method="post"
         onSubmit$={submitEmail}
       >
@@ -93,16 +95,16 @@ export default component$(() => {
             Thank you!
           </div>
         ) : null}
-        <fieldset class="flex relative flex-col py-6 w-8/12">
+        <fieldset class="flex relative flex-col py-8 w-full">
           <input
-            class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[40px] placeholder-black px-4"
+            class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
             placeholder="Name"
             onChange$={handleStateChange}
             name="name"
             value={mailerState.name}
           />
           <input
-            class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[40px] placeholder-black px-4"
+            class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
             placeholder="Email"
             onChange$={handleStateChange}
             name="email"
@@ -118,18 +120,18 @@ export default component$(() => {
           <div class="flex justify-center align-center pt-8">
             <button
               disabled={!mailerState.email || !mailerState.name}
-              class={`flex items-center justify-center align-center border border-slate-500 bg-white hover:bg-slate-200 px-4 py-2 cursor-pointer rounded-md disabled:bg-slate-50  ${
+              class={`flex items-center justify-center align-center border shadow bg-white hover:bg-slate-200 px-6 py-3 cursor-pointer rounded-md disabled:bg-slate-50  ${
                 !state.isEmailSent && !state.isSendingEmail
                   ? "disabled:opacity-60"
                   : "disabled:opacity-100"
               } disabled:cursor-not-allowed`}
             >
               {state.isEmailSent ? (
-                <img src={checkIcon} class="h-5 w-5" alt="Email sent" />
+                <img src={checkIcon} class="h-6 w-6" alt="Email sent" />
               ) : state.isSendingEmail ? (
-                <img src={loadingIcon} class="h-5 w-5" alt="Sending email" />
+                <img src={loadingIcon} class="h-6 w-6" alt="Sending email" />
               ) : (
-                <img src={sendIcon} class="h-5 w-5" alt="Send email" />
+                <img src={sendIcon} class="h-6 w-6" alt="Send email" />
               )}
             </button>
           </div>

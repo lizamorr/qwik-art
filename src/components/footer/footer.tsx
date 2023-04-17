@@ -1,11 +1,23 @@
 import { component$ } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
+  const location = useLocation();
   return (
-    <footer class="cursor-pointer bg-white fixed bottom-0 left-0 p-2 shadow z-10 w-full flex justify-center tracking-wider">
+    <footer
+      class={`cursor-pointer ${
+        location.url.pathname.includes("contact") ||
+        location.url.pathname === "/"
+          ? "absolute bottom-0 left-0"
+          : ""
+      } mt-auto p-2 z-10 w-full flex justify-center tracking-wider`}
+    >
       <a
         href="https://github.com/lizamorr/artwork-website"
         target="_blank"
+        class={`${
+          location.url.pathname.includes("contact") ? "text-white" : ""
+        }`}
       >{`© Liza Morrison ${new Date().getFullYear()}`}</a>
     </footer>
   );
