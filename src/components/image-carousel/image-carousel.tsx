@@ -55,6 +55,7 @@ export default component$((props: { group: any }) => {
         <div class="mt-1 space-x-2" id="dots">
           {[...Array(totalNumOfImages).keys()].map((arrIndex) => (
             <span
+              key={`${state.slideIndex}--${arrIndex}`}
               class={`${
                 state.slideIndex === arrIndex + 1 ? "bg-black" : "bg-slate-300"
               } h-2 w-2 md:h-3 md:w-3 rounded-full inline-block cursor-pointer`}

@@ -6,7 +6,7 @@ export default component$(() => {
   const loc = useLocation();
 
   return (
-    <header class="fixed w-full flex items-center bg-white shadow-md z-10">
+    <header class="fixed w-full flex items-center bg-white shadow-md z-50 h-12 overflow-hidden">
       <a class="h-12 w-15" href="/" title="Liza Morrison">
         <img
           src={initials}
