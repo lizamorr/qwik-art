@@ -34,11 +34,9 @@ import digitalDog from "./images/digital-dog-min.jpg";
 import dinah from "./images/dinah-min.jpg";
 import dogsMiniStand from "./images/dogs-mini-stand-min.jpg";
 import dogsPortrait from "./images/dogs-portrait-min.jpg";
-import donutPrint from "./images/donut-print-min.jpg";
 import eagles from "./images/eagles-min.jpg";
 import eloise from "./images/emily-min.jpg";
 import emma from "./images/emma-min.jpg";
-import emmaFrame from "./images/emma-frame-min.jpg";
 import fatherDaughter from "./images/father-daughter-min.jpg";
 import fragner from "./images/fragner-min.jpg";
 import gift from "./images/gift-min.jpg";
@@ -95,12 +93,10 @@ import richmondPrint from "./images/richmond-print-min.jpg";
 import robinFrame from "./images/robin-frame-min.jpg";
 import robinWilliams from "./images/robin-min.jpg";
 import romain from "./images/romain-min.jpg";
-import sammy from "./images/sammy-min.jpg";
 import shelbysBlood from "./images/shelbys-blood-min.jpg";
 import shelbysFull from "./images/shelbys-full-min.jpg";
 import shelbysOriginal from "./images/shelbys-original-min.jpg";
 import shelbysSmoke from "./images/shelbys-smoke-min.jpg";
-import shoeProject from "./images/shoe-project-min.jpg";
 import sine from "./images/sine-min.jpg";
 import sisterGift from "./images/sister-gift-min.jpg";
 import sisters from "./images/sisters-min.jpg";
@@ -117,19 +113,16 @@ import titanic from "./images/titanic-min.jpg";
 import titanicFrame from "./images/titanic-frame-min.jpg";
 import titanicJon from "./images/titanic-jon-min.jpg";
 import travis from "./images/travis-min.jpg";
-import tridelta from "./images/tridelta-min.jpg";
 import udareShirley from "./images/udare-shirley-min.jpg";
 import udareShirleyFrame from "./images/udare-shirley-frame-min.jpg";
 import underwater from "./images/underwater-min.jpg";
 import underwater2 from "./images/underwater2-min.jpg";
-import voodoo from "./images/voodoo-min.jpg";
 import walterWhite from "./images/walter-white-min.jpg";
 import wedding from "./images/wedding-min.jpg";
 import westhamptonLake from "./images/westhampton-lake-min.jpg";
 import westhamptonLake2 from "./images/westhampton-lake2-min.jpg";
 import witcher from "./images/witcher-min.jpg";
 import zion from "./images/zion-min.jpg";
-import zion2 from "./images/zion2-min.jpg";
 
 export interface IGalleryImage {
   original: string;
@@ -633,25 +626,11 @@ export const imageGroups: IGalleryImage[][] = [
       originalAlt: "Acrylic painting of Zion",
       desc: 'Acrylic, 24x36", May 2020',
     },
-    {
-      original: zion2,
-      originalWidth: 500,
-      id: "painting",
-      originalAlt: "Acrylic painting of Zion",
-      desc: 'Acrylic, 24x36", May 2020',
-    },
   ],
   [
     {
       original: emma,
       originalWidth: 500,
-      id: "drawing",
-      originalAlt: "Emma and Elyse wedding gift",
-      desc: 'Graphite, 19.5x25.5", May 2019',
-    },
-    {
-      original: emmaFrame,
-      originalWidth: 450,
       id: "drawing",
       originalAlt: "Emma and Elyse wedding gift",
       desc: 'Graphite, 19.5x25.5", May 2019',
@@ -1061,15 +1040,6 @@ export const imageGroups: IGalleryImage[][] = [
   ],
   [
     {
-      original: donutPrint,
-      originalWidth: 400,
-      id: "misc",
-      originalAlt: "Donut print",
-      desc: 'Screenprint, 11x14", 2016',
-    },
-  ],
-  [
-    {
       original: recipe,
       originalWidth: 400,
       id: "misc",
@@ -1115,15 +1085,6 @@ export const imageGroups: IGalleryImage[][] = [
   ],
   [
     {
-      original: sammy,
-      originalWidth: 300,
-      id: "painting",
-      originalAlt: "Acrylic painting of Sammy",
-      desc: 'Acrylic, 4x4", July 2020',
-    },
-  ],
-  [
-    {
       original: bee,
       originalWidth: 400,
       id: "painting",
@@ -1151,24 +1112,6 @@ export const imageGroups: IGalleryImage[][] = [
   ],
   [
     {
-      original: tridelta,
-      originalWidth: 400,
-      id: "misc",
-      originalAlt: "Tridelta banner",
-      desc: "Acrylic, 2015",
-    },
-  ],
-  [
-    {
-      original: voodoo,
-      originalWidth: 400,
-      id: "drawing",
-      originalAlt: "Drawing of Voodoo Ranger",
-      desc: 'Colored pencil, 11x14", July 2018',
-    },
-  ],
-  [
-    {
       original: bracelet1,
       originalWidth: 400,
       id: "misc",
@@ -1177,13 +1120,6 @@ export const imageGroups: IGalleryImage[][] = [
     },
   ],
   [
-    {
-      original: shoeProject,
-      originalWidth: 400,
-      id: "drawing",
-      originalAlt: "Three drawings for class project",
-      desc: "All three drawings were stolen at University of Richmond. Please contact me if you see them.",
-    },
     {
       original: converse,
       originalWidth: 400,
