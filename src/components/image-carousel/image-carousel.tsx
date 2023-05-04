@@ -51,6 +51,8 @@ export default component$((props: { group: any }) => {
           id={img.id}
           class="w-full"
           style={`max-width: ${img.originalWidth}px`}
+          width={img.originalWidth}
+          height="auto"
         />
         <div class="mt-1 space-x-2" id="dots">
           {[...Array(totalNumOfImages).keys()].map((arrIndex) => (

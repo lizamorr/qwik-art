@@ -43,7 +43,7 @@ export default component$(() => {
         </div>
       ) : null}
 
-      <div class="fixed h-14 md:h-20 top-12 z-40 left-0 bg-white bg-opacity-95 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider">
+      <div class="fixed h-14 md:h-20 top-12 z-40 left-0 bg-white bg-opacity-90 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider">
         <span
           class={`cursor-pointer hover:underline underline-offset-2 ${
             state.isDrawingSelected
@@ -131,6 +131,8 @@ export default component$(() => {
                   alt={group[0].originalAlt}
                   id={group[0].id}
                   class="w-full"
+                  width={group[0].originalWidth}
+                  height="auto"
                   style={`max-width: ${group[0].originalWidth}px`}
                 />
                 <p
