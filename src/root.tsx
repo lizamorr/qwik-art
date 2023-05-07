@@ -23,9 +23,18 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <link
-          rel="stylesheet"
+          rel="preload"
           href="https://fonts.googleapis.com/css?family=Jost&display=swap"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css?family=Jost&display=swap"
+            rel="stylesheet"
+            type="text/css"
+          />
+        </noscript>
         <RouterHead />
       </head>
       <body lang="en">
