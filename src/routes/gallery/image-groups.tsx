@@ -106,7 +106,7 @@ import snickers from "./images/snickers-min.jpg";
 import steveFrame from "./images/steve-frame-min.jpg";
 import sticky from "./images/sticky-min.jpg";
 import streetArtFish from "./images/street-art-fish-min.jpg";
-import switzerland from "./images/switzerland-min.jpg";
+import switzerland from "./images/switzerland-min.webp";
 import tevlin from "./images/tevlin-min.jpg";
 import tipper from "./images/tipper-min.jpg";
 import titanic from "./images/titanic-min.jpg";
