@@ -51,13 +51,19 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            state.filteredImages = imageGroups.filter((group) =>
-              group.find((img) => img.id === "drawing")
-            );
-            state.isDrawingSelected = true;
-            state.isPaintingSelected = false;
-            state.isDigitalSelected = false;
-            state.isOtherSelected = false;
+            if (state.isDrawingSelected) {
+              state.filteredImages = imageGroups;
+              state.isDrawingSelected = false;
+            } else {
+              state.filteredImages = imageGroups.filter((group) =>
+                group.find((img) => img.id === "drawing")
+              );
+              state.isDrawingSelected = true;
+              state.isPaintingSelected =
+                state.isDigitalSelected =
+                state.isOtherSelected =
+                  false;
+            }
           }}
         >
           Drawings
@@ -69,13 +75,19 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            state.filteredImages = imageGroups.filter((group) =>
-              group.find((img) => img.id === "painting")
-            );
-            state.isDrawingSelected = false;
-            state.isPaintingSelected = true;
-            state.isDigitalSelected = false;
-            state.isOtherSelected = false;
+            if (state.isPaintingSelected) {
+              state.filteredImages = imageGroups;
+              state.isPaintingSelected = false;
+            } else {
+              state.filteredImages = imageGroups.filter((group) =>
+                group.find((img) => img.id === "painting")
+              );
+              state.isDrawingSelected =
+                state.isDigitalSelected =
+                state.isOtherSelected =
+                  false;
+              state.isPaintingSelected = true;
+            }
           }}
         >
           Paintings
@@ -87,13 +99,19 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            state.filteredImages = imageGroups.filter((group) =>
-              group.find((img) => img.id === "digital")
-            );
-            state.isDrawingSelected = false;
-            state.isPaintingSelected = false;
-            state.isDigitalSelected = true;
-            state.isOtherSelected = false;
+            if (state.isDigitalSelected) {
+              state.filteredImages = imageGroups;
+              state.isDigitalSelected = false;
+            } else {
+              state.filteredImages = imageGroups.filter((group) =>
+                group.find((img) => img.id === "digital")
+              );
+              state.isDrawingSelected =
+                state.isPaintingSelected =
+                state.isOtherSelected =
+                  false;
+              state.isDigitalSelected = true;
+            }
           }}
         >
           Digital
@@ -105,13 +123,19 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            state.filteredImages = imageGroups.filter((group) =>
-              group.find((img) => img.id === "misc")
-            );
-            state.isDrawingSelected = false;
-            state.isPaintingSelected = false;
-            state.isDigitalSelected = false;
-            state.isOtherSelected = true;
+            if (state.isOtherSelected) {
+              state.filteredImages = imageGroups;
+              state.isOtherSelected = false;
+            } else {
+              state.filteredImages = imageGroups.filter((group) =>
+                group.find((img) => img.id === "misc")
+              );
+              state.isDrawingSelected =
+                state.isPaintingSelected =
+                state.isDigitalSelected =
+                  false;
+              state.isOtherSelected = true;
+            }
           }}
         >
           Other
