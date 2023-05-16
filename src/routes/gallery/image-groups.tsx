@@ -27,7 +27,6 @@ import carlySteveWedding from "./images/carly-steve-wedding-min.webp";
 import connorBeetles from "./images/connor-beetles-min.webp";
 import converse from "./images/converse-min.webp";
 import couple from "./images/couple-min.webp";
-import couple2 from "./images/couple2-min.webp";
 import curry from "./images/curry-min.webp";
 import derekTurtle from "./images/derek-turtle-min.webp";
 import digitalDog from "./images/digital-dog-min.webp";
@@ -417,13 +416,6 @@ export const imageGroups: IGalleryImage[][] = [
       originalAlt: "Drawing of a couple",
       desc: 'Graphite, 19.5x25.5", March 2020',
     },
-    {
-      original: couple2,
-      originalWidth: 600,
-      id: "drawing",
-      originalAlt: "Drawing of a couple",
-      desc: 'Graphite, 19.5x25.5", March 2020',
-    },
   ],
   [
     {
@@ -460,8 +452,6 @@ export const imageGroups: IGalleryImage[][] = [
       originalAlt: "Digital drawing of Julie",
       desc: 'Digital drawing, 8x10", Jan 2022',
     },
-  ],
-  [
     {
       original: meDigital,
       originalWidth: 400,
@@ -578,7 +568,7 @@ export const imageGroups: IGalleryImage[][] = [
   [
     {
       original: witcher,
-      originalWidth: 500,
+      originalWidth: 400,
       id: "digital",
       originalAlt: "Digital drawing of the witcher",
       desc: 'Digital drawing, 8x10", Jan 2022',
@@ -742,20 +732,18 @@ export const imageGroups: IGalleryImage[][] = [
   ],
   [
     {
-      original: westhamptonLake,
-      originalWidth: 400,
-      id: "painting",
-      originalAlt: "Oil painting of Westhampton Lake",
-      desc: 'Oil, 9x12", Oct 2020',
-    },
-  ],
-  [
-    {
       original: westhamptonLake2,
       originalWidth: 400,
       id: "painting",
       originalAlt: "Oil painting of Westhampton Lake",
       desc: 'Oil, 9x12", Dec 2020',
+    },
+    {
+      original: westhamptonLake,
+      originalWidth: 400,
+      id: "painting",
+      originalAlt: "Oil painting of Westhampton Lake",
+      desc: 'Oil, 9x12", Oct 2020',
     },
   ],
   [
@@ -775,8 +763,6 @@ export const imageGroups: IGalleryImage[][] = [
       originalAlt: "Mini painting of the Grinch",
       desc: 'Acrylic, 3x3", Dec 2016',
     },
-  ],
-  [
     {
       original: dogsMiniStand,
       originalWidth: 400,
@@ -784,14 +770,26 @@ export const imageGroups: IGalleryImage[][] = [
       originalAlt: "Mini painting of Tipper and Snickers",
       desc: 'Acrylic, 3x4", Feb 2021',
     },
-  ],
-  [
     {
       original: pieMiniStand,
       originalWidth: 400,
       id: "painting",
       originalAlt: "Mini painting of proper pie",
       desc: 'Acrylic, 3x3", Feb 2021',
+    },
+    {
+      original: jeter,
+      originalWidth: 400,
+      id: "painting",
+      originalAlt: "Mini painting of Derek Jeter",
+      desc: 'Acrylic, 3x3", 2014',
+    },
+    {
+      original: llama,
+      originalWidth: 400,
+      id: "painting",
+      originalAlt: "Mini llama painting",
+      desc: 'Acrylic, 3x3", Aug 2018',
     },
   ],
   [
@@ -820,7 +818,7 @@ export const imageGroups: IGalleryImage[][] = [
   [
     {
       original: walterWhite,
-      originalWidth: 500,
+      originalWidth: 400,
       id: "drawing",
       originalAlt: "Drawing of WoriginalAlter White",
       desc: 'Graphite, 9x12", June 2013',
@@ -1076,29 +1074,11 @@ export const imageGroups: IGalleryImage[][] = [
   ],
   [
     {
-      original: llama,
-      originalWidth: 400,
-      id: "painting",
-      originalAlt: "Mini llama painting",
-      desc: 'Acrylic, 3x3", Aug 2018',
-    },
-  ],
-  [
-    {
       original: bee,
       originalWidth: 400,
       id: "painting",
       originalAlt: "Mini bumblebee painting",
       desc: 'Acrylic, 4x4", Aug 2020',
-    },
-  ],
-  [
-    {
-      original: jeter,
-      originalWidth: 400,
-      id: "painting",
-      originalAlt: "Mini painting of Derek Jeter",
-      desc: 'Acrylic, 3x3", 2014',
     },
   ],
   [
