@@ -1,8 +1,8 @@
 import type { DocumentHead } from "@builder.io/qwik-city";
-import aboutText from "./about-text-min.jpg";
+import aboutText from "./about-text-min.webp";
 import { component$ } from "@builder.io/qwik";
-import github from "./github-mark.png";
-import lizaMontStMichel from "./liza-mont-st-michel.png";
+import github from "./github-mark.webp";
+import lizaMontStMichel from "./liza-mont-st-michel.webp";
 
 export default component$(() => {
   return (
