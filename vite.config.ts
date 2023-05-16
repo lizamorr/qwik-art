@@ -33,6 +33,10 @@ export default defineConfig(() => {
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1600,
       minify: "terser",
+      ssr: true,
+      rollupOptions: {
+        input: ["src/entry.ssr.tsx", "@qwik-city-plan"],
+      },
     },
   };
 });
