@@ -116,11 +116,12 @@ export default component$(() => {
             }
           />
           <textarea
-            class="w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[200px] placeholder-black"
+            class="w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[120px] placeholder-black"
             placeholder="Message"
             onChange$={handleStateChange}
             name="message"
             value={mailerState.message}
+            maxLength={140}
           />
           <div class="flex justify-center align-center pt-8">
             <button
