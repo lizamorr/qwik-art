@@ -101,6 +101,7 @@ export default component$(() => {
             onChange$={handleStateChange}
             name="name"
             value={mailerState.name}
+            maxLength={32}
           />
           <input
             class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
