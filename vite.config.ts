@@ -1,5 +1,4 @@
 import { ViteMinifyPlugin } from "vite-plugin-minify";
-import { cloudflarePagesAdapter } from "@builder.io/qwik-city/adapters/cloudflare-pages/vite";
 import { defineConfig } from "vite";
 import postcssNested from "postcss-nested";
 import { qwikCity } from "@builder.io/qwik-city/vite";
@@ -14,13 +13,6 @@ export default defineConfig(() => {
       tsconfigPaths(),
       ViteMinifyPlugin(),
       postcssNested(),
-      cloudflarePagesAdapter({
-        ssg: {
-          include: ["/*"],
-          origin: "https://qwik.builder.io",
-          sitemapOutFile: "sitemap.xml",
-        },
-      }),
     ],
     preview: {
       headers: {
@@ -33,10 +25,6 @@ export default defineConfig(() => {
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1600,
       minify: "terser",
-      ssr: true,
-      rollupOptions: {
-        input: ["src/entry.ssr.tsx", "@qwik-city-plan"],
-      },
     },
   };
 });
