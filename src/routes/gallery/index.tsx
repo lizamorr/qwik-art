@@ -1,4 +1,4 @@
-import { $, component$, useOnWindow, useStore } from "@builder.io/qwik";
+import { $, component$, useOnWindow, useSignal } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
@@ -6,14 +6,12 @@ import arrowUp from "./arrow-up.svg";
 import { imageGroups } from "./image-groups";
 
 export default component$(() => {
-  const state = useStore({
-    filteredImages: imageGroups,
-    isDrawingSelected: false,
-    isPaintingSelected: false,
-    isDigitalSelected: false,
-    isOtherSelected: false,
-    isScrollBtnDisplayed: false,
-  });
+  const filteredImages = useSignal(imageGroups);
+  const isDrawingSelected = useSignal(false);
+  const isPaintingSelected = useSignal(false);
+  const isDigitalSelected = useSignal(false);
+  const isOtherSelected = useSignal(false);
+  const isScrollBtnDisplayed = useSignal(false);
 
   useOnWindow(
     "scroll",
@@ -21,22 +19,22 @@ export default component$(() => {
       if (
         (document.body.scrollTop > 20 ||
           document.documentElement.scrollTop > 20) &&
-        !state.isScrollBtnDisplayed
+        !isScrollBtnDisplayed.value
       )
-        state.isScrollBtnDisplayed = true;
+        isScrollBtnDisplayed.value = true;
     })
   );
 
   return (
     <>
-      {state.isScrollBtnDisplayed ? (
+      {isScrollBtnDisplayed.value ? (
         <div
           id="scroll-btn"
           class="fixed bottom-10 right-4 z-50 p-2 cursor-pointer"
           onClick$={() => {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
-            state.isScrollBtnDisplayed = false;
+            isScrollBtnDisplayed.value = false;
           }}
         >
           <img src={arrowUp} class="h-10 w-10" alt="Scroll to top of page" />
@@ -46,22 +44,22 @@ export default component$(() => {
       <div class="fixed h-14 md:h-20 top-12 z-40 left-0 bg-white bg-opacity-90 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider">
         <span
           class={`cursor-pointer hover:underline underline-offset-2 ${
-            state.isDrawingSelected
+            isDrawingSelected.value
               ? "underline underline-offset-2"
               : "no-underline"
           }`}
           onClick$={() => {
-            if (state.isDrawingSelected) {
-              state.filteredImages = imageGroups;
-              state.isDrawingSelected = false;
+            if (isDrawingSelected.value) {
+              filteredImages.value = imageGroups;
+              isDrawingSelected.value = false;
             } else {
-              state.filteredImages = imageGroups.filter((group) =>
+              filteredImages.value = imageGroups.filter((group) =>
                 group.find((img) => img.id === "drawing")
               );
-              state.isDrawingSelected = true;
-              state.isPaintingSelected =
-                state.isDigitalSelected =
-                state.isOtherSelected =
+              isDrawingSelected.value = true;
+              isPaintingSelected.value =
+                isDigitalSelected.value =
+                isOtherSelected.value =
                   false;
             }
           }}
@@ -70,23 +68,23 @@ export default component$(() => {
         </span>
         <span
           class={`cursor-pointer hover:underline underline-offset-2 ${
-            state.isPaintingSelected
+            isPaintingSelected.value
               ? "underline underline-offset-2"
               : "no-underline"
           }`}
           onClick$={() => {
-            if (state.isPaintingSelected) {
-              state.filteredImages = imageGroups;
-              state.isPaintingSelected = false;
+            if (isPaintingSelected.value) {
+              filteredImages.value = imageGroups;
+              isPaintingSelected.value = false;
             } else {
-              state.filteredImages = imageGroups.filter((group) =>
+              filteredImages.value = imageGroups.filter((group) =>
                 group.find((img) => img.id === "painting")
               );
-              state.isDrawingSelected =
-                state.isDigitalSelected =
-                state.isOtherSelected =
+              isDrawingSelected.value =
+                isDigitalSelected.value =
+                isOtherSelected.value =
                   false;
-              state.isPaintingSelected = true;
+              isPaintingSelected.value = true;
             }
           }}
         >
@@ -94,23 +92,23 @@ export default component$(() => {
         </span>
         <span
           class={`cursor-pointer hover:underline underline-offset-2 ${
-            state.isDigitalSelected
+            isDigitalSelected.value
               ? "underline underline-offset-2"
               : "no-underline"
           }`}
           onClick$={() => {
-            if (state.isDigitalSelected) {
-              state.filteredImages = imageGroups;
-              state.isDigitalSelected = false;
+            if (isDigitalSelected.value) {
+              filteredImages.value = imageGroups;
+              isDigitalSelected.value = false;
             } else {
-              state.filteredImages = imageGroups.filter((group) =>
+              filteredImages.value = imageGroups.filter((group) =>
                 group.find((img) => img.id === "digital")
               );
-              state.isDrawingSelected =
-                state.isPaintingSelected =
-                state.isOtherSelected =
+              isDrawingSelected.value =
+                isPaintingSelected.value =
+                isOtherSelected.value =
                   false;
-              state.isDigitalSelected = true;
+              isDigitalSelected.value = true;
             }
           }}
         >
@@ -118,23 +116,23 @@ export default component$(() => {
         </span>
         <span
           class={`cursor-pointer hover:underline underline-offset-2 ${
-            state.isOtherSelected
+            isOtherSelected.value
               ? "underline underline-offset-2"
               : "no-underline"
           }`}
           onClick$={() => {
-            if (state.isOtherSelected) {
-              state.filteredImages = imageGroups;
-              state.isOtherSelected = false;
+            if (isOtherSelected.value) {
+              filteredImages.value = imageGroups;
+              isOtherSelected.value = false;
             } else {
-              state.filteredImages = imageGroups.filter((group) =>
+              filteredImages.value = imageGroups.filter((group) =>
                 group.find((img) => img.id === "misc")
               );
-              state.isDrawingSelected =
-                state.isPaintingSelected =
-                state.isDigitalSelected =
+              isDrawingSelected.value =
+                isPaintingSelected.value =
+                isDigitalSelected.value =
                   false;
-              state.isOtherSelected = true;
+              isOtherSelected.value = true;
             }
           }}
         >
@@ -143,7 +141,7 @@ export default component$(() => {
       </div>
 
       <div class="flex flex-row w-full flex-wrap justify-center align-center text-center mt-6 md:mt-10">
-        {state.filteredImages.map((group, index) => (
+        {filteredImages.value.map((group, index) => (
           <div key={`${group}-${index}`} class="self-center">
             {group.length === 1 ? (
               <div

@@ -2,6 +2,7 @@ import {
   $,
   component$,
   useOnWindow,
+  useSignal,
   useStore,
   useVisibleTask$,
 } from "@builder.io/qwik";
@@ -22,11 +23,9 @@ export default component$(() => {
     userId: "",
   });
 
-  const state = useStore({
-    isSendingEmail: false,
-    isEmailSent: false,
-    isMobile: true,
-  });
+  const isSendingEmail = useSignal(false);
+  const isEmailSent = useSignal(false);
+  const isMobile = useSignal(true);
 
   const handleStateChange = $((e: any): void => {
     if (e.target.name === "name") mailerState.name = e.target.value;
@@ -41,53 +40,53 @@ export default component$(() => {
   });
 
   useVisibleTask$(() => {
-    state.isMobile = window.innerWidth < 640;
+    isMobile.value = window.innerWidth < 640;
   });
 
   useOnWindow(
     "resize",
     $(() => {
-      state.isMobile = window.innerWidth < 640;
+      isMobile.value = window.innerWidth < 640;
     })
   );
 
   const submitEmail = $(async (e: any): Promise<void> => {
-    state.isSendingEmail = true;
+    isSendingEmail.value = true;
     const userId = import.meta.env.VITE_USER_ID;
 
     try {
       emailjs.init(userId);
       await emailjs.sendForm("service_art", "template_art", e.target, userId);
-      state.isSendingEmail = false;
-      state.isEmailSent = true;
+      isSendingEmail.value = false;
+      isEmailSent.value = true;
       resetForm();
     } catch (e) {
       alert("Sorry, please email me at lizammorrison@gmail.com instead.");
-      state.isSendingEmail = false;
+      isSendingEmail.value = false;
     }
 
     setTimeout(() => {
-      state.isEmailSent = false;
-      state.isSendingEmail = false;
+      isEmailSent.value = false;
+      isSendingEmail.value = false;
     }, 1000);
   });
 
   return (
     <div
       style={{
-        backgroundImage: `url(${state.isMobile ? capri : switzerland})`,
+        backgroundImage: `url(${isMobile.value ? capri : switzerland})`,
       }}
       class="fixed top-[48px] left-0 h-screen w-full flex justify-center bg-cover bg-center"
     >
       <form
         preventdefault:submit
         class={`${
-          state.isSendingEmail ? "opacity-80" : "opacity-100"
+          isSendingEmail.value ? "opacity-80" : "opacity-100"
         } flex justify-center pt-24 m-4 w-4/5 lg:w-2/5`}
         method="post"
         onSubmit$={submitEmail}
       >
-        {state.isEmailSent ? (
+        {isEmailSent.value ? (
           <div
             id="thank-you"
             class="z-50 absolute flex justify-center items-center w-full h-3/4 text-2xl sm:text-4xl"
@@ -121,14 +120,14 @@ export default component$(() => {
             <button
               disabled={!mailerState.email || !mailerState.name}
               class={`flex items-center justify-center align-center border shadow bg-white hover:bg-slate-200 px-6 py-3 cursor-pointer rounded-md disabled:bg-slate-50  ${
-                !state.isEmailSent && !state.isSendingEmail
+                !isEmailSent.value && !isSendingEmail.value
                   ? "disabled:opacity-60"
                   : "disabled:opacity-100"
               } disabled:cursor-not-allowed`}
             >
-              {state.isEmailSent ? (
+              {isEmailSent.value ? (
                 <img src={checkIcon} class="h-6 w-6" alt="Email sent" />
-              ) : state.isSendingEmail ? (
+              ) : isSendingEmail.value ? (
                 <img src={loadingIcon} class="h-6 w-6" alt="Sending email" />
               ) : (
                 <img src={sendIcon} class="h-6 w-6" alt="Send email" />
