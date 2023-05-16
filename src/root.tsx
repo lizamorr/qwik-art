@@ -26,11 +26,6 @@ export default component$(() => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Jost&display=swap"
         />
-        <link
-          rel="preload"
-          href="/src/routes/gallery/images/switzerland-min.webp"
-          as="image"
-        ></link>
         <RouterHead />
       </head>
       <body lang="en">
