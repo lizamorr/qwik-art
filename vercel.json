@@ -9,5 +9,7 @@
         }
       ]
     }
-  ]
+  ],
+  "framework": "null",
+  "routes": [{ "src": "/sitemap.xml", "dest": "/sitemap.xml" }]
 }
