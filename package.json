@@ -40,8 +40,6 @@
     "vercel": "^28.4.17",
     "vite": "4.2.0",
     "vite-plugin-minify": "^1.5.2",
-    "vite-ssg": "^0.22.2",
-    "vite-ssg-sitemap": "^0.5.1",
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {

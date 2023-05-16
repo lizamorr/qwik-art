@@ -1,6 +1,5 @@
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import { defineConfig } from "vite";
-import generateSitemap from "vite-ssg-sitemap";
 import postcssNested from "postcss-nested";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
@@ -15,11 +14,6 @@ export default defineConfig(() => {
       ViteMinifyPlugin(),
       postcssNested(),
     ],
-    ssgOptions: {
-      onFinished() {
-        generateSitemap();
-      },
-    },
     preview: {
       headers: {
         "Cache-Control": "public, max-age=600",
