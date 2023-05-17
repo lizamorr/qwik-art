@@ -112,9 +112,6 @@ export default component$(() => {
             type="text"
             pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
             required
-            onInvalid$={(e) =>
-              e.target.setCustomValidity("Please enter a valid email")
-            }
           />
           <textarea
             class="w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[120px] placeholder-black"
