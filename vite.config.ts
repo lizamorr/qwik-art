@@ -26,5 +26,13 @@ export default defineConfig(() => {
       chunkSizeWarningLimit: 1600,
       minify: "terser",
     },
+    async rewrites() {
+      return [
+        {
+          source: "/sitemap.xml",
+          destination: "/api/sitemap",
+        },
+      ];
+    },
   };
 });
