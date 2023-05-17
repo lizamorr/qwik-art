@@ -8,12 +8,12 @@ import {
 } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
-import capri from "../gallery/images/capri-min.webp";
+import capri from "../../images/capri-min.webp";
 import checkIcon from "./check.svg";
 import emailjs from "@emailjs/browser";
 import loadingIcon from "./loading.svg";
 import sendIcon from "./send.svg";
-import switzerland from "../gallery/images/switzerland-min.webp";
+import switzerland from "../../images/switzerland-min.webp";
 
 export default component$(() => {
   const mailerState = useStore({

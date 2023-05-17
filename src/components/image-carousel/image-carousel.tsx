@@ -1,6 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 
 import type { IGalleryImage } from "../../routes/gallery/image-groups";
+import { Image } from "@unpic/qwik";
 import leftArrow from "./left-arrow.svg";
 import rightArrow from "./right-arrow.svg";
 
@@ -45,14 +46,13 @@ export default component$((props: { group: any }) => {
       }}
     >
       <div>
-        <img
+        <Image
           src={img.original}
           alt={img.originalAlt}
           id={img.id}
-          class="w-full"
-          style={`max-width: ${img.originalWidth}px`}
+          layout="constrained"
           width={img.originalWidth}
-          height="auto"
+          height={400}
         />
         <div class="mt-1 space-x-2" id="dots">
           {[...Array(totalNumOfImages).keys()].map((arrIndex) => (

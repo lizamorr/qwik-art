@@ -1,6 +1,7 @@
 import { $, component$, useOnWindow, useSignal } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { Image } from "@unpic/qwik";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
 import arrowUp from "./arrow-up.svg";
 import { imageGroups } from "./image-groups";
@@ -146,16 +147,15 @@ export default component$(() => {
             {group.length === 1 ? (
               <div
                 key={index}
-                class="align-center inline-flex flex-col justify-center w-full m-5 max-w-fit"
+                class="align-center inline-flex flex-col justify-center m-5"
               >
-                <img
+                <Image
                   src={group[0].original}
                   alt={group[0].originalAlt}
                   id={group[0].id}
-                  class="w-full"
+                  layout="constrained"
                   width={group[0].originalWidth}
-                  height="auto"
-                  style={`max-width: ${group[0].originalWidth}px`}
+                  height={400}
                 />
                 <p
                   class="text-md md:text-xl w-full text-center tracking-wider mt-2"
