@@ -18,7 +18,7 @@ export default component$((props: { group: any }) => {
 
   return group.map((img: IGalleryImage, index: number) => (
     <div
-      key={index}
+      key={img.id + "--" + index}
       class={slideIndex.value === index + 1 ? "block" : "hidden"}
       onTouchStart$={(e) => {
         touchstartX.value = e.changedTouches[0].screenX;
@@ -53,6 +53,7 @@ export default component$((props: { group: any }) => {
           layout="constrained"
           width={img.originalWidth}
           height={400}
+          background="auto"
         />
         <div class="mt-1 space-x-2" id="dots">
           {[...Array(totalNumOfImages).keys()].map((arrIndex) => (

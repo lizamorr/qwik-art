@@ -1,4 +1,10 @@
-import { $, component$, useOnWindow, useSignal } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useComputed$,
+  useOnWindow,
+  useSignal,
+} from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Image } from "@unpic/qwik";
@@ -7,23 +13,50 @@ import arrowUp from "./arrow-up.svg";
 import { imageGroups } from "./image-groups";
 
 export default component$(() => {
-  const filteredImages = useSignal(imageGroups);
   const isDrawingSelected = useSignal(false);
   const isPaintingSelected = useSignal(false);
   const isDigitalSelected = useSignal(false);
   const isOtherSelected = useSignal(false);
   const isScrollBtnDisplayed = useSignal(false);
 
+  const filteredImages = useComputed$(() => {
+    if (
+      !isPaintingSelected.value &&
+      !isDrawingSelected.value &&
+      !isOtherSelected.value &&
+      !isDigitalSelected.value
+    ) {
+      return imageGroups;
+    }
+
+    const filteredImages = imageGroups.filter((group) =>
+      group.find((img) =>
+        isPaintingSelected.value
+          ? img.id === "painting"
+          : isDrawingSelected.value
+          ? img.id === "drawing"
+          : isOtherSelected.value
+          ? img.id === "misc"
+          : isDigitalSelected.value
+          ? img.id === "digital"
+          : img
+      )
+    );
+
+    console.log(filteredImages);
+
+    return filteredImages;
+  });
+
   useOnWindow(
     "scroll",
-    $(() => {
-      if (
-        (document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20) &&
-        !isScrollBtnDisplayed.value
-      )
-        isScrollBtnDisplayed.value = true;
-    })
+    $(
+      () =>
+        (isScrollBtnDisplayed.value =
+          (document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20) &&
+          !isScrollBtnDisplayed.value)
+    )
   );
 
   return (
@@ -33,8 +66,7 @@ export default component$(() => {
           id="scroll-btn"
           class="fixed bottom-10 right-4 z-50 p-2 cursor-pointer"
           onClick$={() => {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             isScrollBtnDisplayed.value = false;
           }}
         >
@@ -50,19 +82,11 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            if (isDrawingSelected.value) {
-              filteredImages.value = imageGroups;
-              isDrawingSelected.value = false;
-            } else {
-              filteredImages.value = imageGroups.filter((group) =>
-                group.find((img) => img.id === "drawing")
-              );
-              isDrawingSelected.value = true;
-              isPaintingSelected.value =
-                isDigitalSelected.value =
-                isOtherSelected.value =
-                  false;
-            }
+            isDrawingSelected.value = !isDrawingSelected.value;
+            isPaintingSelected.value =
+              isDigitalSelected.value =
+              isOtherSelected.value =
+                false;
           }}
         >
           Drawings
@@ -74,19 +98,11 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            if (isPaintingSelected.value) {
-              filteredImages.value = imageGroups;
-              isPaintingSelected.value = false;
-            } else {
-              filteredImages.value = imageGroups.filter((group) =>
-                group.find((img) => img.id === "painting")
-              );
-              isDrawingSelected.value =
-                isDigitalSelected.value =
-                isOtherSelected.value =
-                  false;
-              isPaintingSelected.value = true;
-            }
+            isPaintingSelected.value = !isPaintingSelected.value;
+            isDrawingSelected.value =
+              isDigitalSelected.value =
+              isOtherSelected.value =
+                false;
           }}
         >
           Paintings
@@ -98,19 +114,11 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            if (isDigitalSelected.value) {
-              filteredImages.value = imageGroups;
-              isDigitalSelected.value = false;
-            } else {
-              filteredImages.value = imageGroups.filter((group) =>
-                group.find((img) => img.id === "digital")
-              );
-              isDrawingSelected.value =
-                isPaintingSelected.value =
-                isOtherSelected.value =
-                  false;
-              isDigitalSelected.value = true;
-            }
+            isDigitalSelected.value = !isDigitalSelected.value;
+            isDrawingSelected.value =
+              isPaintingSelected.value =
+              isOtherSelected.value =
+                false;
           }}
         >
           Digital
@@ -122,19 +130,11 @@ export default component$(() => {
               : "no-underline"
           }`}
           onClick$={() => {
-            if (isOtherSelected.value) {
-              filteredImages.value = imageGroups;
-              isOtherSelected.value = false;
-            } else {
-              filteredImages.value = imageGroups.filter((group) =>
-                group.find((img) => img.id === "misc")
-              );
-              isDrawingSelected.value =
-                isPaintingSelected.value =
-                isDigitalSelected.value =
-                  false;
-              isOtherSelected.value = true;
-            }
+            isOtherSelected.value = !isOtherSelected.value;
+            isDrawingSelected.value =
+              isPaintingSelected.value =
+              isDigitalSelected.value =
+                false;
           }}
         >
           Other
@@ -143,12 +143,9 @@ export default component$(() => {
 
       <div class="flex flex-row w-full flex-wrap justify-center align-center text-center mt-6 md:mt-10">
         {filteredImages.value.map((group, index) => (
-          <div key={`${group}-${index}`} class="self-center">
+          <div key={`${group[0].desc}-${index}`} class="self-center">
             {group.length === 1 ? (
-              <div
-                key={index}
-                class="align-center inline-flex flex-col justify-center m-5"
-              >
+              <div class="align-center inline-flex flex-col justify-center m-5">
                 <Image
                   src={group[0].original}
                   alt={group[0].originalAlt}
@@ -156,6 +153,8 @@ export default component$(() => {
                   layout="constrained"
                   width={group[0].originalWidth}
                   height={400}
+                  priority={index < 3}
+                  background="auto"
                 />
                 <p
                   class="text-md md:text-xl w-full text-center tracking-wider mt-2"
