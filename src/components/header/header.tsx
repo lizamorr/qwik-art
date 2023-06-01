@@ -21,12 +21,12 @@ export default component$(() => {
           {!isMenuOpen.value ? (
             <HiBars3Solid
               onClick$={() => (isMenuOpen.value = true)}
-              class="text-4xl md:text-5xl"
+              class="cursor-pointer text-4xl md:text-5xl"
             />
           ) : (
             <HiXMarkSolid
               onClick$={() => (isMenuOpen.value = false)}
-              class="text-4xl md:text-5xl"
+              class="cursor-pointer text-4xl md:text-5xl"
             />
           )}
         </li>
