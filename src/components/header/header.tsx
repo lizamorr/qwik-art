@@ -1,58 +1,44 @@
-import { component$ } from "@builder.io/qwik";
+import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
+import { component$, useSignal } from "@builder.io/qwik";
+
+import MenuItem from "./menu-item";
 import initials from "./initials-compressed.png";
-import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
-  const loc = useLocation();
+  const isMenuOpen = useSignal(false);
 
   return (
-    <header class="fixed w-full flex items-center bg-white shadow-md z-50 h-12 overflow-hidden">
-      <a class="h-12 w-15" href="/" title="Liza Morrison">
-        <img
-          src={initials}
-          class="logo cursor-pointer"
-          aria-label="Navigate home"
-        />
-      </a>
+    <>
+      <header class="fixed w-full flex justify-between items-center bg-white shadow-md z-50 h-14 overflow-hidden">
+        <a class="flex items-center md:ml-4" href="/" title="Liza Morrison">
+          <img
+            src={initials}
+            class="h-12 w-15 md:h-16 md:w-24 logo cursor-pointer"
+            aria-label="Navigate home"
+          />
+        </a>
+        <li class="inline-block m-2 md:mr-4">
+          {!isMenuOpen.value ? (
+            <HiBars3Solid
+              onClick$={() => (isMenuOpen.value = true)}
+              class="text-4xl md:text-5xl"
+            />
+          ) : (
+            <HiXMarkSolid
+              onClick$={() => (isMenuOpen.value = false)}
+              class="text-4xl md:text-5xl"
+            />
+          )}
+        </li>
+      </header>
 
-      <ul class="m-0 list-none flex-1 text-right pr-4 space-x-4">
-        <li class="inline-block m-0 p-0">
-          <a
-            class={`text-xl md:text-2xl inline-block hover:underline underline-offset-2 tracking-wider ${
-              loc.url.pathname === "/gallery/"
-                ? "underline underline-offset-2"
-                : "no-underline"
-            }`}
-            href="/gallery/"
-          >
-            Gallery
-          </a>
-        </li>
-        <li class="inline-block m-0 p-0">
-          <a
-            class={`text-xl md:text-2xl inline-block hover:underline underline-offset-2 tracking-wider ${
-              loc.url.pathname === "/contact/"
-                ? "underline underline-offset-2"
-                : "no-underline"
-            }`}
-            href="/contact/"
-          >
-            Contact
-          </a>
-        </li>
-        <li class="inline-block m-0 p-0">
-          <a
-            class={`text-xl md:text-2xl inline-block hover:underline underline-offset-2 tracking-wider ${
-              loc.url.pathname === "/about/"
-                ? "underline underline-offset-2"
-                : "no-underline"
-            }`}
-            href="/about/"
-          >
-            About
-          </a>
-        </li>
-      </ul>
-    </header>
+      {isMenuOpen.value && (
+        <div class="bg-white fixed items-center w-full h-full flex flex-col z-50 top-14 overflow-hidden space-y-4 p-10 bg-opacity-90">
+          <MenuItem name="gallery" />
+          <MenuItem name="contact" />
+          <MenuItem name="about" />
+        </div>
+      )}
+    </>
   );
 });
