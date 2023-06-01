@@ -76,9 +76,9 @@ export default component$(() => {
 
       <div class="fixed h-14 md:h-20 top-12 z-40 left-0 bg-white bg-opacity-90 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider">
         <span
-          class={`cursor-pointer hover:underline underline-offset-2 ${
+          class={`cursor-pointer hover:underline underline-offset-8 ${
             isDrawingSelected.value
-              ? "underline underline-offset-2"
+              ? "underline underline-offset-8"
               : "no-underline"
           }`}
           onClick$={() => {
@@ -92,9 +92,9 @@ export default component$(() => {
           Drawings
         </span>
         <span
-          class={`cursor-pointer hover:underline underline-offset-2 ${
+          class={`cursor-pointer hover:underline underline-offset-8 ${
             isPaintingSelected.value
-              ? "underline underline-offset-2"
+              ? "underline underline-offset-8"
               : "no-underline"
           }`}
           onClick$={() => {
@@ -108,9 +108,9 @@ export default component$(() => {
           Paintings
         </span>
         <span
-          class={`cursor-pointer hover:underline underline-offset-2 ${
+          class={`cursor-pointer hover:underline underline-offset-8 ${
             isDigitalSelected.value
-              ? "underline underline-offset-2"
+              ? "underline underline-offset-8"
               : "no-underline"
           }`}
           onClick$={() => {
@@ -124,9 +124,9 @@ export default component$(() => {
           Digital
         </span>
         <span
-          class={`cursor-pointer hover:underline underline-offset-2 ${
+          class={`cursor-pointer hover:underline underline-offset-8 ${
             isOtherSelected.value
-              ? "underline underline-offset-2"
+              ? "underline underline-offset-8"
               : "no-underline"
           }`}
           onClick$={() => {

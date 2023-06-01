@@ -6,13 +6,15 @@ import {
   useStore,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import {
+  HiCheckBadgeSolid,
+  HiPaperAirplaneSolid,
+  HiRocketLaunchSolid,
+} from "@qwikest/icons/heroicons";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
 import capri from "../../images/capri-min.webp";
-import checkIcon from "./check.svg";
 import emailjs from "@emailjs/browser";
-import loadingIcon from "./loading.svg";
-import sendIcon from "./send.svg";
 import switzerland from "../../images/switzerland-min.webp";
 
 export default component$(() => {
@@ -96,7 +98,7 @@ export default component$(() => {
         ) : null}
         <fieldset class="flex relative flex-col py-8 w-full">
           <input
-            class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
+            class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
             placeholder="Name"
             onChange$={handleStateChange}
             name="name"
@@ -104,7 +106,7 @@ export default component$(() => {
             maxLength={32}
           />
           <input
-            class="w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
+            class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
             placeholder="Email"
             onChange$={handleStateChange}
             name="email"
@@ -114,8 +116,8 @@ export default component$(() => {
             required
           />
           <textarea
-            class="w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[120px] placeholder-black"
-            placeholder="Message"
+            class="md:text-lg w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[120px] placeholder-black"
+            placeholder="Interested in a custom commission? Send me a message!"
             onChange$={handleStateChange}
             name="message"
             value={mailerState.message}
@@ -131,11 +133,11 @@ export default component$(() => {
               } disabled:cursor-not-allowed`}
             >
               {isEmailSent.value ? (
-                <img src={checkIcon} class="h-6 w-6" alt="Email sent" />
+                <HiCheckBadgeSolid class="h-6 w-6" />
               ) : isSendingEmail.value ? (
-                <img src={loadingIcon} class="h-6 w-6" alt="Sending email" />
+                <HiRocketLaunchSolid class="h-6 w-6" />
               ) : (
-                <img src={sendIcon} class="h-6 w-6" alt="Send email" />
+                <HiPaperAirplaneSolid class="h-6 w-6" />
               )}
             </button>
           </div>

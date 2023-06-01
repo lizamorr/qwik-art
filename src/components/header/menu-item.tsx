@@ -7,9 +7,9 @@ export default component$((props: { name: string }) => {
   return (
     <li class="flex m-0 p-0">
       <a
-        class={`text-4xl hover:underline underline-offset-2 tracking-wider ${
+        class={`text-4xl hover:underline underline-offset-8 tracking-wider ${
           loc.url.pathname === `/${props.name}/`
-            ? "underline underline-offset-2"
+            ? "underline underline-offset-8"
             : "no-underline"
         }`}
         href={`/${props.name}/`}
