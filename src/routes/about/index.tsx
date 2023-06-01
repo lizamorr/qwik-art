@@ -1,4 +1,5 @@
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { Image } from "@unpic/qwik";
 import aboutText from "./about-text-min.webp";
 import { component$ } from "@builder.io/qwik";
 import github from "./github-mark.webp";
@@ -8,10 +9,12 @@ export default component$(() => {
   return (
     <div class="flex flex-wrap justify-center w-full">
       <div class="flex flex-col align-center mx-10">
-        <img
-          class="w-full max-w-md"
+        <Image
           src={lizaMontStMichel}
           alt="Liza at Mont St. Michel"
+          layout="fullWidth"
+          class="w-full max-w-md"
+          background="auto"
         />
         <div class="flex justify-center mt-6 space-x-2">
           <a
@@ -36,7 +39,13 @@ export default component$(() => {
         </div>
       </div>
       <div class="flex justify-center px-6">
-        <img class="w-full max-w-lg" src={aboutText} />
+        <Image
+          src={aboutText}
+          alt="Text describing Liza"
+          layout="fullWidth"
+          class="w-full max-w-lg"
+          background="auto"
+        />
       </div>
     </div>
   );
