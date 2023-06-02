@@ -22,8 +22,10 @@ export default component$(() => {
         <a class="flex items-center md:ml-4" href="/" title="Liza Morrison">
           <img
             src={loc.url.pathname === `/contact/` ? initialsWhite : initials}
-            class="h-10 w-15 md:h-16 md:w-24 logo cursor-pointer"
+            class="h-10 w-16 md:h-16 md:w-24 logo cursor-pointer"
             aria-label="Navigate home"
+            height={40}
+            width={64}
           />
         </a>
         <div class="inline-block md:hidden m-2 md:mr-4">
