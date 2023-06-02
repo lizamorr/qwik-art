@@ -26,7 +26,7 @@ export default component$(() => {
             aria-label="Navigate home"
           />
         </a>
-        <div class="inline-block m-2 md:mr-4">
+        <div class="inline-block md:hidden m-2 md:mr-4">
           {!isMenuOpen.value ? (
             <HiBars3Solid
               onClick$={() => (isMenuOpen.value = true)}
@@ -41,13 +41,19 @@ export default component$(() => {
         </div>
       </header>
 
-      {isMenuOpen.value && (
-        <div class="bg-white fixed items-center w-full h-full flex flex-col z-50 top-12 overflow-hidden space-y-4 p-10 bg-opacity-90">
-          <MenuItem name="gallery" />
-          <MenuItem name="contact" />
-          <MenuItem name="about" />
-        </div>
-      )}
+      <div
+        class={`${
+          isMenuOpen.value
+            ? "flex bg-white flex-col bg-opacity-90 space-y-4 p-10 top-12 h-full"
+            : "hidden md:flex md:flex-row md:space-x-6 md:top-0 md:h-16 md:justify-end md:pr-6"
+        }  fixed items-center w-full z-50 overflow-hidden ${
+          loc.url.pathname === `/contact/` ? "md:text-white" : ""
+        }`}
+      >
+        <MenuItem name="gallery" />
+        <MenuItem name="contact" />
+        <MenuItem name="about" />
+      </div>
     </>
   );
 });
