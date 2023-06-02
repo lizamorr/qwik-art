@@ -5,7 +5,7 @@ export default component$((props: { name: string }) => {
   const loc = useLocation();
 
   return (
-    <li class="flex m-0 p-0">
+    <div class="flex m-0 p-0">
       <a
         class={`text-4xl hover:underline underline-offset-8 tracking-wider ${
           loc.url.pathname === `/${props.name}/`
@@ -16,6 +16,6 @@ export default component$((props: { name: string }) => {
       >
         {props.name}
       </a>
-    </li>
+    </div>
   );
 });

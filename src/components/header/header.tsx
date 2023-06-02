@@ -26,7 +26,7 @@ export default component$(() => {
             aria-label="Navigate home"
           />
         </a>
-        <li class="inline-block m-2 md:mr-4">
+        <div class="inline-block m-2 md:mr-4">
           {!isMenuOpen.value ? (
             <HiBars3Solid
               onClick$={() => (isMenuOpen.value = true)}
@@ -38,7 +38,7 @@ export default component$(() => {
               class="cursor-pointer text-4xl md:text-5xl"
             />
           )}
-        </li>
+        </div>
       </header>
 
       {isMenuOpen.value && (

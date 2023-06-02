@@ -12,7 +12,9 @@ export default component$(() => {
         <Image
           src={lizaMontStMichel}
           alt="Liza at Mont St. Michel"
-          layout="fullWidth"
+          layout="constrained"
+          width={400}
+          height={600}
           class="w-full max-w-md"
           background="auto"
         />
@@ -42,7 +44,9 @@ export default component$(() => {
         <Image
           src={aboutText}
           alt="Text describing Liza"
-          layout="fullWidth"
+          layout="constrained"
+          width={400}
+          height={600}
           class="w-full max-w-lg"
           background="auto"
         />

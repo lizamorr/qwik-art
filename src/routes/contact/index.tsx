@@ -125,6 +125,7 @@ export default component$(() => {
           />
           <div class="flex justify-center align-center pt-8">
             <button
+              aria-label="Send message"
               disabled={!mailerState.email || !mailerState.name}
               class={`flex items-center justify-center align-center border shadow bg-white hover:bg-slate-200 px-6 py-3 cursor-pointer rounded-md disabled:bg-slate-50  ${
                 !isEmailSent.value && !isSendingEmail.value
