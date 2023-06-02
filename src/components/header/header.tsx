@@ -44,9 +44,9 @@ export default component$(() => {
       <div
         class={`${
           isMenuOpen.value
-            ? "flex bg-white flex-col bg-opacity-90 space-y-4 p-10 top-12 h-full"
-            : "hidden md:flex md:flex-row md:space-x-6 md:top-0 md:h-16 md:justify-end md:pr-6"
-        }  fixed items-center w-full z-50 overflow-hidden ${
+            ? "flex bg-white w-full flex-col bg-opacity-90 space-y-4 p-10 top-12 h-full"
+            : "hidden md:flex md:flex-row md:space-x-6 md:top-0 md:h-16 md:justify-end md:pr-6 md:w-fit md:right-0"
+        }  fixed items-center z-50 overflow-hidden ${
           loc.url.pathname === `/contact/` ? "md:text-white" : ""
         }`}
       >
