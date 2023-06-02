@@ -13,7 +13,7 @@ export default component$(() => {
           src={lizaMontStMichel}
           alt="Liza at Mont St. Michel"
           layout="constrained"
-          width={400}
+          width={700}
           height={600}
           class="w-full max-w-md"
           background="auto"
@@ -45,9 +45,8 @@ export default component$(() => {
           src={aboutText}
           alt="Text describing Liza"
           layout="constrained"
-          width={400}
+          width={500}
           height={600}
-          class="w-full max-w-lg"
           background="auto"
         />
       </div>
