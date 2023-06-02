@@ -1,6 +1,7 @@
 import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
 import { component$, useSignal } from "@builder.io/qwik";
 
+import { Image } from "@unpic/qwik";
 import MenuItem from "./menu-item";
 import initials from "./initials-compressed.png";
 import initialsWhite from "./initials-white.png";
@@ -20,10 +21,11 @@ export default component$(() => {
         } fixed w-full flex justify-between items-center z-50 h-12 md:h-16 overflow-hidden md:py-4`}
       >
         <a class="flex items-center md:ml-4" href="/" title="Liza Morrison">
-          <img
+          <Image
             src={loc.url.pathname === `/contact/` ? initialsWhite : initials}
             class="h-10 w-16 md:h-16 md:w-24 logo cursor-pointer"
             aria-label="Navigate home"
+            layout="constrained"
             height={40}
             width={64}
           />
