@@ -2,14 +2,14 @@ import {
   $,
   component$,
   useComputed$,
-  useOnWindow,
+  useOnDocument,
   useSignal,
 } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { HiChevronDoubleUpMini } from "@qwikest/icons/heroicons";
 import { Image } from "@unpic/qwik";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
-import arrowUp from "./arrow-up.svg";
 import { imageGroups } from "./image-groups";
 
 export default component$(() => {
@@ -17,7 +17,7 @@ export default component$(() => {
   const isPaintingSelected = useSignal(false);
   const isDigitalSelected = useSignal(false);
   const isOtherSelected = useSignal(false);
-  const isScrollBtnDisplayed = useSignal(false);
+  const isScrollBtnDisplayed = useSignal(true);
 
   const filteredImages = useComputed$(() => {
     if (
@@ -48,31 +48,27 @@ export default component$(() => {
     return filteredImages;
   });
 
-  useOnWindow(
+  useOnDocument(
     "scroll",
-    $(
-      () =>
-        (isScrollBtnDisplayed.value =
-          (document.body.scrollTop > 20 ||
-            document.documentElement.scrollTop > 20) &&
-          !isScrollBtnDisplayed.value)
-    )
+    $(() => {
+      isScrollBtnDisplayed.value =
+        document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
+    })
   );
 
   return (
     <>
-      {isScrollBtnDisplayed.value ? (
-        <div
-          id="scroll-btn"
-          class="fixed bottom-10 right-4 z-50 p-2 cursor-pointer"
-          onClick$={() => {
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-            isScrollBtnDisplayed.value = false;
-          }}
-        >
-          <img src={arrowUp} class="h-10 w-10" alt="Scroll to top of page" />
-        </div>
-      ) : null}
+      <div
+        id="scroll-btn"
+        class={`${
+          isScrollBtnDisplayed.value ? "block" : "hidden"
+        } fixed bottom-10 right-4 z-50 p-2 cursor-pointer`}
+        onClick$={() => {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }}
+      >
+        <HiChevronDoubleUpMini color="#cbd5e1" class="h-10 w-10" />
+      </div>
 
       <div class="fixed h-14 md:h-20 top-12 z-40 left-0 bg-white bg-opacity-90 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider">
         <span

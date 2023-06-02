@@ -1,9 +1,11 @@
+import {
+  HiChevronLeftSolid,
+  HiChevronRightSolid,
+} from "@qwikest/icons/heroicons";
 import { component$, useSignal } from "@builder.io/qwik";
 
 import type { IGalleryImage } from "../../routes/gallery/image-groups";
 import { Image } from "@unpic/qwik";
-import leftArrow from "./left-arrow.svg";
-import rightArrow from "./right-arrow.svg";
 
 export default component$((props: { group: any }) => {
   const { group } = props;
@@ -77,25 +79,23 @@ export default component$((props: { group: any }) => {
         class="flex top-0 absolute h-full w-full justify-between"
         style={`max-width: ${img.originalWidth}px`}
       >
-        <img
-          src={leftArrow}
+        <HiChevronLeftSolid
+          color="#cbd5e1"
           onClick$={() => {
             slideIndex.value === 1
               ? (slideIndex.value = totalNumOfImages)
               : (slideIndex.value -= 1);
           }}
           class="h-full w-8 md:h-full md:w-12 arrow ml-[-30px] md:ml-[-40px] justify-center items-center cursor-pointer"
-          alt="Left arrow"
         />
-        <img
-          src={rightArrow}
+        <HiChevronRightSolid
+          color="#cbd5e1"
           onClick$={() => {
             slideIndex.value === totalNumOfImages
               ? (slideIndex.value = 1)
               : (slideIndex.value += 1);
           }}
           class="h-full w-8 md:h-full md:w-12 arrow mr-[-30px] md:mr-[-40px] justify-center items-center cursor-pointer"
-          alt="Right arrow"
         />
       </div>
     </div>
