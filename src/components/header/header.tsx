@@ -42,7 +42,7 @@ export default component$(() => {
       </header>
 
       {isMenuOpen.value && (
-        <div class="bg-white fixed items-center w-full h-full flex flex-col z-50 top-14 overflow-hidden space-y-4 p-10 bg-opacity-90">
+        <div class="bg-white fixed items-center w-full h-full flex flex-col z-50 top-12 overflow-hidden space-y-4 p-10 bg-opacity-90">
           <MenuItem name="gallery" />
           <MenuItem name="contact" />
           <MenuItem name="about" />

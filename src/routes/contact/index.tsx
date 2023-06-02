@@ -91,7 +91,7 @@ export default component$(() => {
         {isEmailSent.value ? (
           <div
             id="thank-you"
-            class="z-50 absolute flex justify-center items-center w-full h-3/4 text-2xl sm:text-4xl"
+            class="z-50 absolute flex justify-center items-center w-full md:h-1/2 h-[70%] text-2xl sm:text-4xl"
           >
             Thank you!
           </div>
