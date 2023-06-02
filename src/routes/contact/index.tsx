@@ -78,7 +78,7 @@ export default component$(() => {
       style={{
         backgroundImage: `url(${isMobile.value ? capri : switzerland})`,
       }}
-      class="fixed top-[48px] left-0 h-screen w-full flex justify-center bg-cover bg-center"
+      class="fixed top-0 left-0 h-screen w-full flex justify-center bg-cover bg-center"
     >
       <form
         preventdefault:submit

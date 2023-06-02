@@ -3,17 +3,26 @@ import { component$, useSignal } from "@builder.io/qwik";
 
 import MenuItem from "./menu-item";
 import initials from "./initials-compressed.png";
+import initialsWhite from "./initials-white.png";
+import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const isMenuOpen = useSignal(false);
+  const loc = useLocation();
 
   return (
     <>
-      <header class="fixed w-full flex justify-between items-center bg-white shadow-md z-50 h-14 overflow-hidden">
+      <header
+        class={`${
+          loc.url.pathname === `/contact/`
+            ? "text-white bg-transparent backdrop-blur-md"
+            : "bg-white"
+        } fixed w-full flex justify-between items-center z-50 h-12 md:h-16 overflow-hidden md:py-4`}
+      >
         <a class="flex items-center md:ml-4" href="/" title="Liza Morrison">
           <img
-            src={initials}
-            class="h-12 w-15 md:h-16 md:w-24 logo cursor-pointer"
+            src={loc.url.pathname === `/contact/` ? initialsWhite : initials}
+            class="h-10 w-15 md:h-16 md:w-24 logo cursor-pointer"
             aria-label="Navigate home"
           />
         </a>
