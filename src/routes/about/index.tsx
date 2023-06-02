@@ -17,6 +17,7 @@ export default component$(() => {
           height={600}
           class="w-full max-w-md"
           background="auto"
+          loading="eager"
         />
         <div class="flex justify-center mt-6 space-x-2">
           <a
@@ -48,6 +49,7 @@ export default component$(() => {
           width={500}
           height={600}
           background="auto"
+          loading="eager"
         />
       </div>
     </div>
