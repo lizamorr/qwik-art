@@ -22,13 +22,12 @@ export default component$(() => {
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Jost&display=swap"
-        />
         <RouterHead />
       </head>
       <body lang="en">
+        <style>
+          @import "https://fonts.googleapis.com/css?family=Jost&display=swap"
+        </style>
         <RouterOutlet />
         <ServiceWorkerRegister />
       </body>
