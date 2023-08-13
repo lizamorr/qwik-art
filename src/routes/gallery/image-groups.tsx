@@ -80,6 +80,7 @@ import parentsPrint from "../../images/parents-print-min.webp";
 import peakyBlack from "../../images/peaky-black-min.webp";
 import peakyBlackAndWhite from "../../images/peaky-white-and-black-min.webp";
 import peakyWhite from "../../images/peaky-white-min.webp";
+import pets from "../../images/pets-min.webp";
 import pieMiniStand from "../../images/pie-mini-stand-min.webp";
 import pipelineEtch from "../../images/pipeline-etch-min.webp";
 import plantAnatomy from "../../images/plant-anatomy-min.webp";
@@ -139,6 +140,15 @@ export const imageGroups: IGalleryImage[][] = [
       id: "digital",
       originalAlt: "Digital drawing of Switzerland",
       desc: 'Digital painting, 52x24", April 2022',
+    },
+  ],
+  [
+    {
+      original: pets,
+      originalWidth: 500,
+      id: "digital",
+      originalAlt: "Digital drawing of pets",
+      desc: 'Digital drawing, 8x8", Aug 2023',
     },
   ],
   [
