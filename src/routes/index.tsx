@@ -2,7 +2,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { component$ } from "@builder.io/qwik";
 import labrinth from "./labrinth.mp4";
 import labrinthPoster from "./lab-thumbnail.webp";
-import title from "./liza-morrison-art-compressed.png";
+import title from "./name.gif";
 
 export default component$(() => {
   return (
