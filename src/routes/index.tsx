@@ -10,7 +10,7 @@ export default component$(() => {
       <video
         src={labrinth}
         playsInline
-        autoPlay
+        autoplay
         muted
         loop
         class="object-cover w-auto h-full fixed top-0"

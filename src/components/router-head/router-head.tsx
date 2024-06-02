@@ -32,16 +32,20 @@ export const RouterHead = component$(() => {
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 
-      {head.meta.map((m) => (
-        <meta {...m} />
+      {head.meta.map((m, index) => (
+        <meta {...m} key={`meta-${index}`} />
       ))}
 
-      {head.links.map((l) => (
-        <link {...l} />
+      {head.links.map((l, index) => (
+        <link {...l} key={`link-${index}`} />
       ))}
 
-      {head.styles.map((s) => (
-        <style {...s.props} dangerouslySetInnerHTML={s.style} />
+      {head.styles.map((s, index) => (
+        <style
+          {...s.props}
+          key={`style-${index}`}
+          dangerouslySetInnerHTML={s.style}
+        />
       ))}
     </>
   );

@@ -43,8 +43,6 @@ export default component$(() => {
       )
     );
 
-    console.log(filteredImages);
-
     return filteredImages;
   });
 

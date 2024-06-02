@@ -1,14 +1,13 @@
 import {
   $,
   component$,
+  useOnDocument,
   useOnWindow,
   useSignal,
   useStore,
-  useVisibleTask$,
 } from "@builder.io/qwik";
-import { DocumentHead, Form } from "@builder.io/qwik-city";
+import { type DocumentHead, Form } from "@builder.io/qwik-city";
 import {
-  HiCheckBadgeSolid,
   HiCheckCircleSolid,
   HiPaperAirplaneSolid,
   HiRocketLaunchSolid,
@@ -42,9 +41,12 @@ export default component$(() => {
     mailerState.message = "";
   });
 
-  useVisibleTask$(() => {
-    isMobile.value = window.innerWidth < 640;
-  });
+  useOnDocument(
+    "load",
+    $(() => {
+      isMobile.value = window.innerWidth < 640;
+    })
+  );
 
   useOnWindow(
     "resize",
