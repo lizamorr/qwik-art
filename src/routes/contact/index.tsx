@@ -12,8 +12,6 @@ import {
   HiPaperAirplaneSolid,
   HiRocketLaunchSolid,
 } from "@qwikest/icons/heroicons";
-
-import capri from "../../images/capri-min.webp";
 import emailjs from "@emailjs/browser";
 import switzerland from "../../images/switzerland-min.webp";
 
@@ -79,17 +77,17 @@ export default component$(() => {
   return (
     <div
       style={{
-        backgroundImage: `url(${isMobile.value ? capri : switzerland})`,
+        backgroundImage: `url(${switzerland})`,
       }}
       class="fixed top-0 left-0 h-screen w-full flex justify-center bg-cover bg-center"
     >
       <div
         class={`${
           isSendingEmail.value ? "animate-pulse opacity-80" : "opacity-100"
-        } flex justify-center pt-24 m-4 w-4/5 lg:w-2/5`}
+        } table w-full md:max-w-md lg:max-w-xl pt-32 md:pt-40 lg:pt-52 px-4`}
       >
         <Form onSubmit$={submitEmail}>
-          <fieldset class="flex relative flex-col py-8 w-full min-w-[300px] md:min-w-[600px]">
+          <fieldset class="flex relative flex-col py-8 w-full md:min-w-[600px]">
             <input
               class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
               placeholder="Name"
