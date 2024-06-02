@@ -54,6 +54,10 @@ export default component$(() => {
     })
   );
 
+  const scrollToTop = $(() => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  });
+
   return (
     <>
       <div
@@ -61,9 +65,7 @@ export default component$(() => {
         class={`${
           isScrollBtnDisplayed.value ? "animate-pulse block" : "hidden"
         } fixed bottom-10 right-4 z-50 p-2 cursor-pointer`}
-        onClick$={() => {
-          document.body.scrollTop = document.documentElement.scrollTop = 0;
-        }}
+        onClick$={scrollToTop}
       >
         <HiChevronDoubleUpMini color="#cbd5e1" class="h-10 w-10" />
       </div>
@@ -81,6 +83,7 @@ export default component$(() => {
               isDigitalSelected.value =
               isOtherSelected.value =
                 false;
+            scrollToTop();
           }}
         >
           Drawings
@@ -97,6 +100,7 @@ export default component$(() => {
               isDigitalSelected.value =
               isOtherSelected.value =
                 false;
+            scrollToTop();
           }}
         >
           Paintings
@@ -113,6 +117,7 @@ export default component$(() => {
               isPaintingSelected.value =
               isOtherSelected.value =
                 false;
+            scrollToTop();
           }}
         >
           Digital
@@ -129,6 +134,7 @@ export default component$(() => {
               isPaintingSelected.value =
               isDigitalSelected.value =
                 false;
+            scrollToTop();
           }}
         >
           Other
