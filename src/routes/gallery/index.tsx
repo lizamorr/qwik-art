@@ -34,12 +34,12 @@ export default component$(() => {
         isPaintingSelected.value
           ? img.id === "painting"
           : isDrawingSelected.value
-          ? img.id === "drawing"
-          : isOtherSelected.value
-          ? img.id === "misc"
-          : isDigitalSelected.value
-          ? img.id === "digital"
-          : img
+            ? img.id === "drawing"
+            : isOtherSelected.value
+              ? img.id === "misc"
+              : isDigitalSelected.value
+                ? img.id === "digital"
+                : img
       )
     );
 
@@ -61,7 +61,7 @@ export default component$(() => {
       <div
         id="scroll-btn"
         class={`${
-          isScrollBtnDisplayed.value ? "block" : "hidden"
+          isScrollBtnDisplayed.value ? "animate-pulse block" : "hidden"
         } fixed bottom-10 right-4 z-50 p-2 cursor-pointer`}
         onClick$={() => {
           document.body.scrollTop = document.documentElement.scrollTop = 0;

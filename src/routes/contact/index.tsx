@@ -83,7 +83,7 @@ export default component$(() => {
     >
       <div
         class={`${
-          isSendingEmail.value ? "opacity-80" : "opacity-100"
+          isSendingEmail.value ? "animate-pulse opacity-80" : "opacity-100"
         } flex justify-center pt-24 m-4 w-4/5 lg:w-2/5`}
       >
         <Form onSubmit$={submitEmail}>
