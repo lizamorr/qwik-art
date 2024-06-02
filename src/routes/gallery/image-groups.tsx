@@ -71,12 +71,14 @@ import michaelKobe from "../../images/michael-kobe-min.webp";
 import momGooey from "../../images/mom-gooey-min.webp";
 import morrisons from "../../images/morrisons-min.webp";
 import mountainEtching from "../../images/mountain-etching-min.webp";
+import noodle from "../../images/noodle-min.webp";
 import obama from "../../images/obama-min.webp";
 import octopus from "../../images/octopus-min.webp";
 import odellAndSaquon from "../../images/odell-and-saquon-min.webp";
 import paigeEmmy from "../../images/paige-emmy-min.webp";
 import pancake from "../../images/pancake-min.webp";
 import parentsPrint from "../../images/parents-print-min.webp";
+import pax from "../../images/pax-min.webp";
 import peakyBlack from "../../images/peaky-black-min.webp";
 import peakyBlackAndWhite from "../../images/peaky-white-and-black-min.webp";
 import peakyWhite from "../../images/peaky-white-min.webp";
@@ -135,8 +137,26 @@ export interface IGalleryImage {
 export const imageGroups: IGalleryImage[][] = [
   [
     {
+      original: noodle,
+      originalWidth: 500,
+      id: "digital",
+      originalAlt: "Digital drawing of Noodle",
+      desc: 'Digital drawing, 8x10", April 2024',
+    },
+  ],
+  [
+    {
+      original: pax,
+      originalWidth: 400,
+      id: "digital",
+      originalAlt: "Digital drawing of Pax",
+      desc: 'Digital drawing, 8x10", Feb 2024',
+    },
+  ],
+  [
+    {
       original: switzerland,
-      originalWidth: 800,
+      originalWidth: 900,
       id: "digital",
       originalAlt: "Digital drawing of Switzerland",
       desc: 'Digital painting, 52x24", April 2022',
