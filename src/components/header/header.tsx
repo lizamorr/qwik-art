@@ -1,5 +1,5 @@
+import { $, component$, useSignal } from "@builder.io/qwik";
 import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
-import { component$, useSignal } from "@builder.io/qwik";
 
 import { Image } from "@unpic/qwik";
 import MenuItem from "./menu-item";
@@ -33,12 +33,12 @@ export default component$(() => {
         <div class="inline-block md:hidden m-2 md:mr-4">
           {!isMenuOpen.value ? (
             <HiBars3Solid
-              onClick$={() => (isMenuOpen.value = true)}
+              onClick$={$(() => (isMenuOpen.value = true))}
               class="cursor-pointer text-4xl md:text-5xl"
             />
           ) : (
             <HiXMarkSolid
-              onClick$={() => (isMenuOpen.value = false)}
+              onClick$={$(() => (isMenuOpen.value = false))}
               class="cursor-pointer text-4xl md:text-5xl"
             />
           )}

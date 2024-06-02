@@ -1,8 +1,8 @@
+import { $, component$, useSignal } from "@builder.io/qwik";
 import {
   HiChevronLeftSolid,
   HiChevronRightSolid,
 } from "@qwikest/icons/heroicons";
-import { component$, useSignal } from "@builder.io/qwik";
 
 import type { IGalleryImage } from "../../routes/gallery/image-groups";
 import { Image } from "@unpic/qwik";
@@ -54,7 +54,7 @@ export default component$((props: { group: any }) => {
           id={img.id}
           layout="constrained"
           width={img.originalWidth}
-          height={400}
+          height="auto"
           background="auto"
         />
         <div class="mt-1 space-x-2" id="dots">
@@ -81,20 +81,20 @@ export default component$((props: { group: any }) => {
       >
         <HiChevronLeftSolid
           color="#cbd5e1"
-          onClick$={() => {
+          onClick$={$(() => {
             slideIndex.value === 1
               ? (slideIndex.value = totalNumOfImages)
               : (slideIndex.value -= 1);
-          }}
+          })}
           class="h-full w-8 md:h-full md:w-12 arrow ml-[-30px] md:ml-[-40px] justify-center items-center cursor-pointer"
         />
         <HiChevronRightSolid
           color="#cbd5e1"
-          onClick$={() => {
+          onClick$={$(() => {
             slideIndex.value === totalNumOfImages
               ? (slideIndex.value = 1)
               : (slideIndex.value += 1);
-          }}
+          })}
           class="h-full w-8 md:h-full md:w-12 arrow mr-[-30px] md:mr-[-40px] justify-center items-center cursor-pointer"
         />
       </div>

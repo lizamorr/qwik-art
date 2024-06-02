@@ -6,13 +6,14 @@ import {
   useStore,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import { DocumentHead, Form } from "@builder.io/qwik-city";
 import {
   HiCheckBadgeSolid,
+  HiCheckCircleSolid,
   HiPaperAirplaneSolid,
   HiRocketLaunchSolid,
 } from "@qwikest/icons/heroicons";
 
-import type { DocumentHead } from "@builder.io/qwik-city";
 import capri from "../../images/capri-min.webp";
 import emailjs from "@emailjs/browser";
 import switzerland from "../../images/switzerland-min.webp";
@@ -80,70 +81,61 @@ export default component$(() => {
       }}
       class="fixed top-0 left-0 h-screen w-full flex justify-center bg-cover bg-center"
     >
-      <form
-        preventdefault:submit
+      <div
         class={`${
           isSendingEmail.value ? "opacity-80" : "opacity-100"
         } flex justify-center pt-24 m-4 w-4/5 lg:w-2/5`}
-        method="post"
-        onSubmit$={submitEmail}
       >
-        {isEmailSent.value ? (
-          <div
-            id="thank-you"
-            class="z-50 absolute flex justify-center items-center w-full md:h-1/2 h-[70%] text-2xl sm:text-4xl"
-          >
-            Thank you!
-          </div>
-        ) : null}
-        <fieldset class="flex relative flex-col py-8 w-full">
-          <input
-            class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
-            placeholder="Name"
-            onChange$={handleStateChange}
-            name="name"
-            value={mailerState.name}
-            maxLength={32}
-          />
-          <input
-            class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
-            placeholder="Email"
-            onChange$={handleStateChange}
-            name="email"
-            value={mailerState.email}
-            type="text"
-            pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-            required
-          />
-          <textarea
-            class="md:text-lg w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[120px] placeholder-black"
-            placeholder="Interested in a custom commission? Send me a message!"
-            onChange$={handleStateChange}
-            name="message"
-            value={mailerState.message}
-            maxLength={140}
-          />
-          <div class="flex justify-center align-center pt-8">
-            <button
-              aria-label="Send message"
-              disabled={!mailerState.email || !mailerState.name}
-              class={`flex items-center justify-center align-center border shadow bg-white hover:bg-slate-200 px-6 py-3 cursor-pointer rounded-md disabled:bg-slate-50  ${
-                !isEmailSent.value && !isSendingEmail.value
-                  ? "disabled:opacity-60"
-                  : "disabled:opacity-100"
-              } disabled:cursor-not-allowed`}
-            >
-              {isEmailSent.value ? (
-                <HiCheckBadgeSolid class="h-6 w-6" />
-              ) : isSendingEmail.value ? (
-                <HiRocketLaunchSolid class="h-6 w-6" />
-              ) : (
-                <HiPaperAirplaneSolid class="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </fieldset>
-      </form>
+        <Form onSubmit$={submitEmail}>
+          <fieldset class="flex relative flex-col py-8 w-full min-w-[300px] md:min-w-[600px]">
+            <input
+              class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
+              placeholder="Name"
+              onChange$={handleStateChange}
+              name="name"
+              value={mailerState.name}
+              maxLength={32}
+            />
+            <input
+              class="md:text-lg w-full border-none rounded-md bg-white mb-2 opacity-95 min-h-[50px] placeholder-black px-4"
+              placeholder="Email"
+              onChange$={handleStateChange}
+              name="email"
+              value={mailerState.email}
+              type="text"
+              pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+              required
+            />
+            <textarea
+              class="md:text-lg w-full rounded-md bg-white mb-2 p-4 opacity-95 min-h-[120px] placeholder-black"
+              placeholder="Interested in a custom commission? Send me a message!"
+              onChange$={handleStateChange}
+              name="message"
+              value={mailerState.message}
+              maxLength={140}
+            />
+            <div class="flex justify-center align-center pt-8">
+              <button
+                aria-label="Send message"
+                disabled={!mailerState.email || !mailerState.name}
+                class={`flex items-center justify-center align-center border shadow bg-white hover:bg-slate-200 px-6 py-3 cursor-pointer rounded-md disabled:bg-slate-50  ${
+                  !isEmailSent.value && !isSendingEmail.value
+                    ? "disabled:opacity-60"
+                    : "disabled:opacity-100"
+                } disabled:cursor-not-allowed`}
+              >
+                {isEmailSent.value ? (
+                  <HiCheckCircleSolid class="h-6 w-6" />
+                ) : isSendingEmail.value ? (
+                  <HiRocketLaunchSolid class="h-6 w-6" />
+                ) : (
+                  <HiPaperAirplaneSolid class="h-6 w-6" />
+                )}
+              </button>
+            </div>
+          </fieldset>
+        </Form>
+      </div>
     </div>
   );
 });

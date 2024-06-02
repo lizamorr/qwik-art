@@ -45,7 +45,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "@qwikest/icons": "^0.0.13",
-    "@unpic/qwik": "^0.0.19",
+    "@unpic/qwik": "^0.0.46",
     "postcss-minify": "^1.1.0",
     "postcss-nested": "^6.0.1",
     "sass": "^1.77.4"

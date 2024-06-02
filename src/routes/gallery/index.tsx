@@ -148,7 +148,7 @@ export default component$(() => {
                   id={group[0].id}
                   layout="constrained"
                   width={group[0].originalWidth}
-                  height={400}
+                  height="auto"
                   priority={index < 3}
                   background="auto"
                 />

@@ -14,8 +14,15 @@ export default defineConfig(() => {
       ViteMinifyPlugin(),
       postcssNested(),
     ],
+    server: {
+      headers: {
+        // Don't cache the server response in dev mode
+        "Cache-Control": "public, max-age=0",
+      },
+    },
     preview: {
       headers: {
+        // Do cache the server response in preview (non-adapter production build)
         "Cache-Control": "public, max-age=600",
       },
     },
@@ -24,7 +31,6 @@ export default defineConfig(() => {
       reportCompressedSize: true,
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1600,
-      minify: "terser",
     },
   };
 });
