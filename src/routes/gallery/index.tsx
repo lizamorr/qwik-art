@@ -7,6 +7,7 @@ import {
 } from "@builder.io/qwik";
 
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { FilteredImagesLoader } from "./filtered-images-loader";
 import { HiChevronDoubleUpMini } from "@qwikest/icons/heroicons";
 import { Image } from "@unpic/qwik";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
@@ -27,6 +28,7 @@ export default component$(() => {
   const isDigitalSelected = useSignal(false);
   const isOtherSelected = useSignal(false);
   const isScrollBtnDisplayed = useSignal(true);
+  const isLoadingFilteredImages = useSignal(false);
 
   const filteredImages = useComputed$(() => {
     let activeFilter: ActiveFilter = "all";
@@ -59,6 +61,9 @@ export default component$(() => {
   });
 
   const toggleSelection = $((selectedType: SelectedType) => {
+    isLoadingFilteredImages.value = true;
+    scrollToTop();
+
     const signals = {
       isDrawingSelected,
       isPaintingSelected,
@@ -74,7 +79,9 @@ export default component$(() => {
       }
     });
 
-    scrollToTop();
+    setTimeout(() => {
+      isLoadingFilteredImages.value = false;
+    }, 1000);
   });
 
   return (
@@ -115,36 +122,40 @@ export default component$(() => {
       </div>
 
       <div class="flex flex-row w-full flex-wrap justify-center align-center text-center mt-6 md:mt-10">
-        {filteredImages.value.map((group, index) => (
-          <div key={`${group[0].desc}-${index}`} class="self-center">
-            {group.length === 1 ? (
-              <div class="align-center inline-flex flex-col justify-center m-5">
-                <Image
-                  src={group[0].original}
-                  alt={group[0].originalAlt}
-                  id={group[0].id}
-                  layout="constrained"
-                  width={group[0].originalWidth}
-                  height="auto"
-                  priority={index < 3}
-                  background="auto"
-                  decoding={index < 3 ? "sync" : "async"}
-                  loading={index < 3 ? "eager" : "lazy"}
-                />
-                <p
-                  class="text-md md:text-xl w-full text-center tracking-wider mt-2"
-                  style={`max-width: ${group[0].originalWidth}px`}
-                >
-                  {group[0].desc}
-                </p>
-              </div>
-            ) : (
-              <div class="relative z-5 align-center inline-flex flex-col justify-center w-full my-5 mx-10 md:mx-8 max-w-fit">
-                <ImageCarousel group={group} />
-              </div>
-            )}
-          </div>
-        ))}
+        {isLoadingFilteredImages.value ? (
+          <FilteredImagesLoader />
+        ) : (
+          filteredImages.value.map((group, index) => (
+            <div key={`${group[0].desc}-${index}`} class="self-center">
+              {group.length === 1 ? (
+                <div class="align-center inline-flex flex-col justify-center m-5">
+                  <Image
+                    src={group[0].original}
+                    alt={group[0].originalAlt}
+                    id={group[0].id}
+                    layout="constrained"
+                    width={group[0].originalWidth}
+                    height="auto"
+                    priority={index < 3}
+                    background="auto"
+                    decoding={index < 3 ? "sync" : "async"}
+                    loading={index < 3 ? "eager" : "lazy"}
+                  />
+                  <p
+                    class="text-md md:text-xl w-full text-center tracking-wider mt-2"
+                    style={`max-width: ${group[0].originalWidth}px`}
+                  >
+                    {group[0].desc}
+                  </p>
+                </div>
+              ) : (
+                <div class="relative z-5 align-center inline-flex flex-col justify-center w-full my-5 mx-10 md:mx-8 max-w-fit">
+                  <ImageCarousel group={group} />
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
     </>
   );
