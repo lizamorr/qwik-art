@@ -1,8 +1,7 @@
 import Footer from "../footer/footer";
 import MenuItem from "./menu-item";
-import { component$ } from "@builder.io/qwik";
 
-export default component$((props: { isOpen: boolean }) => {
+export const MobileMenu = (props: { isOpen: boolean }) => {
   return (
     <div
       class={`fixed top-12 right-0 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 overflow-hidden px-6 py-10 flex flex-col justify-between ${props.isOpen ? "translate-x-0" : "translate-x-full"}`}
@@ -18,4 +17,4 @@ export default component$((props: { isOpen: boolean }) => {
       </div>
     </div>
   );
-});
+};

@@ -3,7 +3,7 @@ import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
 
 import DesktopMenu from "../menu/desktop-menu";
 import { Image } from "@unpic/qwik";
-import MobileMenu from "../menu/mobile-menu";
+import { MobileMenu } from "../menu/mobile-menu";
 import initials from "./initials-compressed.png";
 import initialsWhite from "./initials-white.png";
 import { useLocation } from "@builder.io/qwik-city";

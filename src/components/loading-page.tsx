@@ -1,6 +1,4 @@
-import { component$ } from "@builder.io/qwik";
-
-export default component$(() => {
+export const LoadingPage = () => {
   return (
     <div class="flex items-center justify-center h-screen bg-gray-100">
       <div class="text-center">
@@ -8,4 +6,4 @@ export default component$(() => {
       </div>
     </div>
   );
-});
+};
