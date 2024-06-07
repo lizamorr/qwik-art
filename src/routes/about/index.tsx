@@ -18,6 +18,7 @@ export default component$(() => {
           class="w-full max-w-md"
           background="auto"
           loading="eager"
+          priority={true}
         />
         <div class="flex justify-center mt-6 space-x-2">
           <a
