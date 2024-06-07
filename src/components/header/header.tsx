@@ -2,9 +2,7 @@ import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
 
 import DesktopMenu from "../menu/desktop-menu";
-import Footer from "../footer/footer";
 import { Image } from "@unpic/qwik";
-import MenuItem from "../menu/menu-item";
 import MobileMenu from "../menu/mobile-menu";
 import initials from "./initials-compressed.png";
 import initialsWhite from "./initials-white.png";
