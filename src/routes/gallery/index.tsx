@@ -20,27 +20,18 @@ export default component$(() => {
   const isScrollBtnDisplayed = useSignal(true);
 
   const filteredImages = useComputed$(() => {
-    if (
-      !isPaintingSelected.value &&
-      !isDrawingSelected.value &&
-      !isOtherSelected.value &&
-      !isDigitalSelected.value
-    ) {
+    let activeFilter = "";
+    if (isPaintingSelected.value) activeFilter = "painting";
+    else if (isDrawingSelected.value) activeFilter = "drawing";
+    else if (isOtherSelected.value) activeFilter = "misc";
+    else if (isDigitalSelected.value) activeFilter = "digital";
+
+    if (activeFilter === "") {
       return imageGroups;
     }
 
     const filteredImages = imageGroups.filter((group) =>
-      group.find((img) =>
-        isPaintingSelected.value
-          ? img.id === "painting"
-          : isDrawingSelected.value
-            ? img.id === "drawing"
-            : isOtherSelected.value
-              ? img.id === "misc"
-              : isDigitalSelected.value
-                ? img.id === "digital"
-                : img
-      )
+      group.some((img) => img.id === activeFilter)
     );
 
     return filteredImages;
