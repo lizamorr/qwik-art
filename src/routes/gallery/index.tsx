@@ -10,7 +10,16 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { HiChevronDoubleUpMini } from "@qwikest/icons/heroicons";
 import { Image } from "@unpic/qwik";
 import ImageCarousel from "../../components/image-carousel/image-carousel";
+import { TypeToggle } from "./type-toggle";
 import { imageGroups } from "./image-groups";
+
+type SelectedType =
+  | "isDrawingSelected"
+  | "isPaintingSelected"
+  | "isDigitalSelected"
+  | "isOtherSelected";
+
+type ActiveFilter = "drawing" | "painting" | "digital" | "misc" | "all";
 
 export default component$(() => {
   const isDrawingSelected = useSignal(false);
@@ -20,13 +29,13 @@ export default component$(() => {
   const isScrollBtnDisplayed = useSignal(true);
 
   const filteredImages = useComputed$(() => {
-    let activeFilter = "";
+    let activeFilter: ActiveFilter = "all";
     if (isPaintingSelected.value) activeFilter = "painting";
     else if (isDrawingSelected.value) activeFilter = "drawing";
     else if (isOtherSelected.value) activeFilter = "misc";
     else if (isDigitalSelected.value) activeFilter = "digital";
 
-    if (activeFilter === "") {
+    if (activeFilter === "all") {
       return imageGroups;
     }
 
@@ -49,6 +58,25 @@ export default component$(() => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   });
 
+  const toggleSelection = $((selectedType: SelectedType) => {
+    const signals = {
+      isDrawingSelected,
+      isPaintingSelected,
+      isDigitalSelected,
+      isOtherSelected,
+    } as any;
+
+    Object.keys(signals).forEach((type) => {
+      if (type === selectedType) {
+        signals[type].value = !signals[type].value;
+      } else {
+        signals[type].value = false;
+      }
+    });
+
+    scrollToTop();
+  });
+
   return (
     <>
       <div
@@ -64,74 +92,26 @@ export default component$(() => {
       <div
         class={`fixed h-14 md:h-20 top-12 z-40 left-0 !bg-white bg-opacity-90 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider`}
       >
-        <span
-          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
-            isDrawingSelected.value
-              ? "underline underline-offset-8"
-              : "no-underline"
-          }`}
-          onClick$={() => {
-            isDrawingSelected.value = !isDrawingSelected.value;
-            isPaintingSelected.value =
-              isDigitalSelected.value =
-              isOtherSelected.value =
-                false;
-            scrollToTop();
-          }}
-        >
-          Drawings
-        </span>
-        <span
-          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
-            isPaintingSelected.value
-              ? "underline underline-offset-8"
-              : "no-underline"
-          }`}
-          onClick$={() => {
-            isPaintingSelected.value = !isPaintingSelected.value;
-            isDrawingSelected.value =
-              isDigitalSelected.value =
-              isOtherSelected.value =
-                false;
-            scrollToTop();
-          }}
-        >
-          Paintings
-        </span>
-        <span
-          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
-            isDigitalSelected.value
-              ? "underline underline-offset-8"
-              : "no-underline"
-          }`}
-          onClick$={() => {
-            isDigitalSelected.value = !isDigitalSelected.value;
-            isDrawingSelected.value =
-              isPaintingSelected.value =
-              isOtherSelected.value =
-                false;
-            scrollToTop();
-          }}
-        >
-          Digital
-        </span>
-        <span
-          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
-            isOtherSelected.value
-              ? "underline underline-offset-8"
-              : "no-underline"
-          }`}
-          onClick$={() => {
-            isOtherSelected.value = !isOtherSelected.value;
-            isDrawingSelected.value =
-              isPaintingSelected.value =
-              isDigitalSelected.value =
-                false;
-            scrollToTop();
-          }}
-        >
-          Other
-        </span>
+        <TypeToggle
+          label="Drawings"
+          isSelected={isDrawingSelected.value}
+          onClick$={$(() => toggleSelection("isDrawingSelected"))}
+        />
+        <TypeToggle
+          label="Paintings"
+          isSelected={isPaintingSelected.value}
+          onClick$={$(() => toggleSelection("isPaintingSelected"))}
+        />
+        <TypeToggle
+          label="Digital"
+          isSelected={isDigitalSelected.value}
+          onClick$={$(() => toggleSelection("isDigitalSelected"))}
+        />
+        <TypeToggle
+          label="Other"
+          isSelected={isOtherSelected.value}
+          onClick$={$(() => toggleSelection("isOtherSelected"))}
+        />
       </div>
 
       <div class="flex flex-row w-full flex-wrap justify-center align-center text-center mt-6 md:mt-10">
