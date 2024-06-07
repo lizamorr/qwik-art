@@ -1,9 +1,11 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
 
+import DesktopMenu from "../menu/desktop-menu";
 import Footer from "../footer/footer";
 import { Image } from "@unpic/qwik";
-import MenuItem from "./menu-item";
+import MenuItem from "../menu/menu-item";
+import MobileMenu from "../menu/mobile-menu";
 import initials from "./initials-compressed.png";
 import initialsWhite from "./initials-white.png";
 import { useLocation } from "@builder.io/qwik-city";
@@ -59,26 +61,15 @@ export default component$(() => {
         </div>
       </header>
 
+      <DesktopMenu />
+      <MobileMenu isOpen={isMenuOpen.value} />
+
       {isMenuOpen.value && (
         <div
           class="fixed inset-0 bg-black bg-opacity-50 z-[49]"
           onClick$={$(() => (isMenuOpen.value = false))}
         ></div>
       )}
-
-      <div
-        class={`menu fixed top-12 right-0 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 overflow-hidden px-6 py-10 flex flex-col justify-between ${isMenuOpen.value ? "translate-x-0" : "translate-x-full"}`}
-      >
-        <div class="space-y-10">
-          <MenuItem name="home" />
-          <MenuItem name="gallery" />
-          <MenuItem name="contact" />
-          <MenuItem name="about" />
-        </div>
-        <div class="mb-2">
-          <Footer />
-        </div>
-      </div>
     </>
   );
 });
