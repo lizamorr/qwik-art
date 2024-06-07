@@ -74,7 +74,7 @@ export default component$(() => {
         class={`fixed h-14 md:h-20 top-12 z-40 left-0 !bg-white bg-opacity-90 text-md md:text-2xl flex space-x-4 md:space-x-20 justify-between px-6 md:justify-center items-center w-full tracking-wider`}
       >
         <span
-          class={`cursor-pointer hover:underline underline-offset-8 ${
+          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
             isDrawingSelected.value
               ? "underline underline-offset-8"
               : "no-underline"
@@ -91,7 +91,7 @@ export default component$(() => {
           Drawings
         </span>
         <span
-          class={`cursor-pointer hover:underline underline-offset-8 ${
+          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
             isPaintingSelected.value
               ? "underline underline-offset-8"
               : "no-underline"
@@ -108,7 +108,7 @@ export default component$(() => {
           Paintings
         </span>
         <span
-          class={`cursor-pointer hover:underline underline-offset-8 ${
+          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
             isDigitalSelected.value
               ? "underline underline-offset-8"
               : "no-underline"
@@ -125,7 +125,7 @@ export default component$(() => {
           Digital
         </span>
         <span
-          class={`cursor-pointer hover:underline underline-offset-8 ${
+          class={`cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${
             isOtherSelected.value
               ? "underline underline-offset-8"
               : "no-underline"
@@ -157,6 +157,8 @@ export default component$(() => {
                   height="auto"
                   priority={index < 3}
                   background="auto"
+                  decoding={index < 3 ? "sync" : "async"}
+                  loading={index < 3 ? "eager" : "lazy"}
                 />
                 <p
                   class="text-md md:text-xl w-full text-center tracking-wider mt-2"

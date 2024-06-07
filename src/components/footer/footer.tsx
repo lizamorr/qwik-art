@@ -15,9 +15,6 @@ export default component$(() => {
       <a
         href="https://github.com/lizamorr/artwork-website"
         target="_blank"
-        class={`${
-          location.url.pathname.includes("contact") ? "text-white" : ""
-        }`}
       >{`© Liza Morrison ${new Date().getFullYear()}`}</a>
     </footer>
   );

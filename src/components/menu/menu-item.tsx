@@ -14,7 +14,7 @@ export default component$((props: { name: string }) => {
   return (
     <div class="flex m-0 p-0">
       <Link
-        class={`text-4xl md:text-2xl hover:underline underline-offset-8 tracking-wider ${
+        class={`text-4xl md:text-2xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 tracking-wider ${
           isPageSelected.value ? "underline underline-offset-8" : "no-underline"
         }`}
         href={navigateTo.value}

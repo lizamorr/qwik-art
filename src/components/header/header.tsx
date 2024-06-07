@@ -1,11 +1,10 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
 
-import DesktopMenu from "../menu/desktop-menu";
+import { DesktopMenu } from "../menu/desktop-menu";
 import { Image } from "@unpic/qwik";
 import { MobileMenu } from "../menu/mobile-menu";
 import initials from "./initials-compressed.png";
-import initialsWhite from "./initials-white.png";
 import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
@@ -26,7 +25,7 @@ export default component$(() => {
       <header
         class={`${
           loc.url.pathname === `/contact/`
-            ? "text-white bg-transparent backdrop-blur-md"
+            ? "bg-transparent backdrop-blur-md"
             : "bg-white"
         } fixed w-full flex justify-between items-center z-50 h-12 md:h-16 overflow-hidden md:py-4`}
       >
@@ -36,12 +35,13 @@ export default component$(() => {
           title="Liza Morrison"
         >
           <Image
-            src={loc.url.pathname === `/contact/` ? initialsWhite : initials}
+            src={initials}
             class="h-10 w-16 md:h-16 md:w-24 logo cursor-pointer"
             aria-label="Navigate home"
             layout="constrained"
             height={40}
             width={64}
+            priority={true}
           />
         </a>
         <div class="inline-block md:hidden m-2 md:mr-4">
