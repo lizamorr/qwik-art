@@ -1,6 +1,7 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
+import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
 
+import Footer from "../footer/footer";
 import { Image } from "@unpic/qwik";
 import MenuItem from "./menu-item";
 import initials from "./initials-compressed.png";
@@ -8,8 +9,17 @@ import initialsWhite from "./initials-white.png";
 import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
-  const isMenuOpen = useSignal(false);
+  const isMenuOpen = useSignal<boolean>(false);
   const loc = useLocation();
+
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
+    track(() => isMenuOpen.value);
+    const body = document.getElementById("body");
+    isMenuOpen.value
+      ? body?.classList.add("no-scroll")
+      : body?.classList.remove("no-scroll");
+  });
 
   return (
     <>
@@ -20,7 +30,11 @@ export default component$(() => {
             : "bg-white"
         } fixed w-full flex justify-between items-center z-50 h-12 md:h-16 overflow-hidden md:py-4`}
       >
-        <a class="flex items-center md:ml-4" href="/" title="Liza Morrison">
+        <a
+          class="flex items-center mt-1 ml-2 md:ml-4"
+          href="/"
+          title="Liza Morrison"
+        >
           <Image
             src={loc.url.pathname === `/contact/` ? initialsWhite : initials}
             class="h-10 w-16 md:h-16 md:w-24 logo cursor-pointer"
@@ -45,18 +59,25 @@ export default component$(() => {
         </div>
       </header>
 
+      {isMenuOpen.value && (
+        <div
+          class="fixed inset-0 bg-black bg-opacity-50 z-[49]"
+          onClick$={$(() => (isMenuOpen.value = false))}
+        ></div>
+      )}
+
       <div
-        class={`${
-          isMenuOpen.value
-            ? "flex bg-white w-full flex-col bg-opacity-90 space-y-4 p-10 top-12 h-full"
-            : "hidden md:flex md:flex-row md:space-x-6 md:top-0 md:h-16 md:justify-end md:pr-6 md:w-fit md:right-0"
-        }  fixed items-center z-50 overflow-hidden ${
-          loc.url.pathname === `/contact/` ? "md:text-white" : ""
-        }`}
+        class={`menu fixed top-12 right-0 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 overflow-hidden px-6 py-10 flex flex-col justify-between ${isMenuOpen.value ? "translate-x-0" : "translate-x-full"}`}
       >
-        <MenuItem name="gallery" />
-        <MenuItem name="contact" />
-        <MenuItem name="about" />
+        <div class="space-y-10">
+          <MenuItem name="home" />
+          <MenuItem name="gallery" />
+          <MenuItem name="contact" />
+          <MenuItem name="about" />
+        </div>
+        <div class="mb-2">
+          <Footer />
+        </div>
       </div>
     </>
   );

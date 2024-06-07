@@ -16,6 +16,10 @@ body {
   font-variant: all-small-caps;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 section {
   display: flex;
   margin: 0 auto;
@@ -24,10 +28,4 @@ section {
 
 .all-small-caps {
   font-variant: all-small-caps;
-}
-
-#thank-you {
-  font-variant: normal;
-  font-family: cursive;
-  letter-spacing: 1px;
 }
