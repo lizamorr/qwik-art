@@ -1,9 +1,21 @@
+import { component$, useOnWindow, useSignal } from "@builder.io/qwik";
+
+import { $ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { component$ } from "@builder.io/qwik";
+import { Image } from "@unpic/qwik";
 import labrinth from "./labrinth.mp4";
 import title from "./name.gif";
 
 export default component$(() => {
+  const isMobile = useSignal<boolean>(true);
+
+  useOnWindow(
+    "resize",
+    $(() => {
+      isMobile.value = window.innerWidth < 640;
+    })
+  );
+
   return (
     <div class="w-full flex justify-center items-center overflow-hidden h-full">
       <video
@@ -15,10 +27,13 @@ export default component$(() => {
         class="object-cover w-auto h-full fixed top-0"
         id="labrinth"
       />
-      <img
+      <Image
         src={title}
-        class="absolute m-auto inset-0 w-3/4"
+        class="absolute m-auto inset-0 overflow-hidden"
         alt="Liza Morrison Art"
+        layout="fixed"
+        height={`${isMobile.value ? 200 : 300}`}
+        width={`${isMobile.value ? 300 : 700}`}
       />
     </div>
   );

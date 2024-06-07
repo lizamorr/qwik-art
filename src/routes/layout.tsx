@@ -6,9 +6,9 @@ import { LoadingPage } from "../components/loading-page";
 import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
-  const { isNavigating } = useLocation();
+  const loc = useLocation();
 
-  return isNavigating ? (
+  return loc.isNavigating ? (
     <LoadingPage />
   ) : (
     <>
