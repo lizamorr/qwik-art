@@ -4,15 +4,15 @@ import {
   useComputed$,
   useOnDocument,
   useSignal,
-} from "@builder.io/qwik";
+} from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { HiChevronDoubleUpMini } from '@qwikest/icons/heroicons';
+import { Image } from '@unpic/qwik';
 
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { FilteredImagesLoader } from "./filtered-images-loader";
-import { HiChevronDoubleUpMini } from "@qwikest/icons/heroicons";
-import { Image } from "@unpic/qwik";
-import ImageCarousel from "../../components/image-carousel/image-carousel";
-import { TypeToggle } from "./type-toggle";
-import { imageGroups } from "./image-groups";
+import ImageCarousel from '../../components/image-carousel/image-carousel';
+import { FilteredImagesLoader } from './filtered-images-loader';
+import { imageGroups } from './image-groups';
+import { TypeToggle } from './type-toggle';
 
 type SelectedType =
   | "isDrawingSelected"
