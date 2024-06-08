@@ -1,10 +1,14 @@
-import { component$, useOnWindow, useSignal } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useOnWindow,
+  useSignal,
+} from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { Image } from '@unpic/qwik';
 
-import { $ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { Image } from "@unpic/qwik";
-import labrinth from "./labrinth.mp4";
-import title from "./name.gif";
+import labrinth from './labrinth.mp4';
+import title from './name.gif';
 
 export default component$(() => {
   const isMobile = useSignal<boolean>(true);

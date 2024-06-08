@@ -1,10 +1,18 @@
-import { Link, useLocation } from "@builder.io/qwik-city";
-import { component$, useSignal } from "@builder.io/qwik";
+import {
+  component$,
+  useComputed$,
+  useSignal,
+} from '@builder.io/qwik';
+import {
+  Link,
+  useLocation,
+} from '@builder.io/qwik-city';
 
 export default component$((props: { name: string }) => {
   const loc = useLocation();
-  const isPageSelected = useSignal<boolean>(
-    loc.url.pathname === `/${props.name}/` ||
+  const isPageSelected = useComputed$(
+    () =>
+      loc.url.pathname === `/${props.name}/` ||
       (loc.url.pathname === "/" && props.name === "home")
   );
   const navigateTo = useSignal<string>(

@@ -5,15 +5,17 @@ import {
   useOnWindow,
   useSignal,
   useStore,
-} from "@builder.io/qwik";
-import { type DocumentHead, Form } from "@builder.io/qwik-city";
+} from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { Form } from '@builder.io/qwik-city';
+import emailjs from '@emailjs/browser';
 import {
   HiCheckCircleSolid,
   HiPaperAirplaneSolid,
   HiRocketLaunchSolid,
-} from "@qwikest/icons/heroicons";
-import emailjs from "@emailjs/browser";
-import switzerland from "../../images/switzerland-min.webp";
+} from '@qwikest/icons/heroicons';
+
+import switzerland from '../../images/switzerland-min.webp';
 
 export default component$(() => {
   const mailerState = useStore({

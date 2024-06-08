@@ -1,5 +1,5 @@
-import Footer from "../footer/footer";
-import MenuItem from "./menu-item";
+import Footer from '../footer/footer';
+import MenuItem from './menu-item';
 
 export const MobileMenu = (props: { isOpen: boolean }) => {
   return (

@@ -1,16 +1,13 @@
-import { Slot, component$ } from "@builder.io/qwik";
+import {
+  component$,
+  Slot,
+} from '@builder.io/qwik';
 
-import Footer from "../components/footer/footer";
-import Header from "../components/header/header";
-import { LoadingPage } from "../components/loading-page";
-import { useLocation } from "@builder.io/qwik-city";
+import Footer from '../components/footer/footer';
+import Header from '../components/header/header';
 
 export default component$(() => {
-  const loc = useLocation();
-
-  return loc.isNavigating ? (
-    <LoadingPage />
-  ) : (
+  return (
     <>
       <main>
         <Header />

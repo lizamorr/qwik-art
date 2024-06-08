@@ -1,11 +1,19 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { HiBars3Solid, HiXMarkSolid } from "@qwikest/icons/heroicons";
+import {
+  $,
+  component$,
+  useSignal,
+  useVisibleTask$,
+} from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
+import {
+  HiBars3Solid,
+  HiXMarkSolid,
+} from '@qwikest/icons/heroicons';
+import { Image } from '@unpic/qwik';
 
-import { DesktopMenu } from "../menu/desktop-menu";
-import { Image } from "@unpic/qwik";
-import { MobileMenu } from "../menu/mobile-menu";
-import initials from "./initials-compressed.png";
-import { useLocation } from "@builder.io/qwik-city";
+import { DesktopMenu } from '../menu/desktop-menu';
+import { MobileMenu } from '../menu/mobile-menu';
+import initials from './initials-compressed.png';
 
 export default component$(() => {
   const isMenuOpen = useSignal<boolean>(false);

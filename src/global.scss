@@ -30,27 +30,19 @@ section {
   font-variant: all-small-caps;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.blur-up {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  transition:
+    filter 400ms,
+    -webkit-filter 400ms;
 }
-.spinner {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
+
+.blur-up.lazyloaded {
+  -webkit-filter: blur(0);
+  filter: blur(0);
 }
-.spinner:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid black;
-  border-color: black transparent black transparent;
-  animation: spin 1.2s linear infinite;
+
+.lazyload {
+  transition: opacity 300ms;
 }

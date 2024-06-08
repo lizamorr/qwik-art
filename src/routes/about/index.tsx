@@ -1,24 +1,18 @@
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { Image } from "@unpic/qwik";
-import aboutText from "./about-text-min.webp";
-import { component$ } from "@builder.io/qwik";
-import github from "./github-mark.webp";
-import lizaMontStMichel from "./liza-mont-st-michel.webp";
+import { component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+
+import AboutText from './about-text-min.webp?jsx';
+import github from './github-mark.webp';
+import LizaMontStMichel from './liza-mont-st-michel.webp?jsx';
 
 export default component$(() => {
   return (
     <div class="flex flex-wrap justify-center w-full">
       <div class="flex flex-col align-center mx-10">
-        <Image
-          src={lizaMontStMichel}
+        <LizaMontStMichel
           alt="Liza at Mont St. Michel"
-          layout="constrained"
-          width={400}
-          height="auto"
-          class="w-full max-w-md"
-          background="auto"
+          style={{ width: "400px" }}
           loading="eager"
-          priority={true}
         />
         <div class="flex justify-center mt-6 space-x-2">
           <a
@@ -43,13 +37,9 @@ export default component$(() => {
         </div>
       </div>
       <div class="flex justify-center px-6">
-        <Image
-          src={aboutText}
+        <AboutText
           alt="Text describing Liza"
-          layout="constrained"
-          width={400}
-          height="auto"
-          background="auto"
+          style={{ width: "400px" }}
           loading="eager"
         />
       </div>

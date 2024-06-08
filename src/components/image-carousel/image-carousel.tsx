@@ -1,11 +1,15 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useSignal,
+} from '@builder.io/qwik';
 import {
   HiChevronLeftSolid,
   HiChevronRightSolid,
-} from "@qwikest/icons/heroicons";
+} from '@qwikest/icons/heroicons';
+import { Image } from '@unpic/qwik';
 
-import type { IGalleryImage } from "../../routes/gallery/image-groups";
-import { Image } from "@unpic/qwik";
+import type { IGalleryImage } from '../../routes/gallery/image-groups';
 
 export default component$((props: { group: any }) => {
   const { group } = props;
@@ -56,9 +60,6 @@ export default component$((props: { group: any }) => {
           width={img.originalWidth}
           height="auto"
           background="auto"
-          priority={index < 3}
-          decoding={index < 3 ? "sync" : "async"}
-          loading={index < 3 ? "eager" : "lazy"}
         />
         <div class="mt-1 space-x-2" id="dots">
           {[...Array(totalNumOfImages).keys()].map((arrIndex) => (
