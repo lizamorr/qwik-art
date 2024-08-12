@@ -28,9 +28,6 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body id="body" lang="en">
-        <style>
-          @import "https://fonts.googleapis.com/css?family=Jost&display=swap"
-        </style>
         <RouterOutlet />
         <ServiceWorkerRegister />
       </body>
