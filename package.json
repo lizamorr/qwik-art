@@ -49,6 +49,7 @@
     "cloudinary": "^2.2.0",
     "postcss-minify": "^1.1.0",
     "postcss-nested": "^6.0.1",
+    "qwik-slider": "^1.1.0",
     "sass": "^1.77.4"
   }
 }
