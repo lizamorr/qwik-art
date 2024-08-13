@@ -139,7 +139,7 @@ export default component$(() => {
                 </p>
               </div>
             ) : (
-              <div class="z-5 align-center justify-center w-full my-5 mx-10 md:mx-8">
+              <div class="relative z-5 align-center inline-flex flex-col justify-center w-full my-5 mx-10 md:mx-8 max-w-fit">
                 <ImageCarousel group={group} />
               </div>
             )}
