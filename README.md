@@ -1,4 +1,4 @@
-# Qwik City App ⚡️ [lizamorrisonart.com](https://www.lizamorrisonart.com)
+# Qwik City App ⚡️ [https://www.qwik-art.vercel.com](https://qwik-art.vercel.app/)
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Qwik GitHub](https://github.com/BuilderIO/qwik)
